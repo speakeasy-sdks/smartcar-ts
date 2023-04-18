@@ -14,13 +14,13 @@
 ### NPM
 
 ```bash
-npm add https://github.com/speakeasy-sdks/smartcar-ts
+npm add SmartCar
 ```
 
 ### Yarn
 
 ```bash
-yarn add https://github.com/speakeasy-sdks/smartcar-ts
+yarn add SmartCar
 ```
 <!-- End SDK Installation -->
 
