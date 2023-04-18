@@ -1,10 +1,10 @@
 configVersion: 1.0.0
 generation:
   telemetryEnabled: false
-  sdkClassName: SDK
+  sdkClassName: Smartcar
   sdkFlattening: true
   singleTagPerOp: false
 typescript:
-  version: ""
+  version: "1.0.0"
   author: smartcar
   packageName: SmartCar
