@@ -23,7 +23,12 @@ tags:
 x-speakeasy-name-overrides:
   - operationId: ^list.*
     methodNameOverride: list
-
+x-speakeasy-globals:
+  parameters:
+    - name: vehicle_id
+      in: path
+      schema:
+        type: string
 paths:
   /vehicles:
     get:
@@ -88,7 +93,8 @@ paths:
           description: A list of vehicles
           content:
             application/json:
-              $ref: '#/components/schemas/VehiclesResponse'
+              schema:
+                $ref: '#/components/schemas/VehiclesResponse'
   /vehicles/{vehicle_id}:
     parameters:
       - name: vehicle_id
@@ -195,7 +201,8 @@ paths:
           description: The applications permissions
           content:
             application/json:
-              $ref: '#/components/schemas/Permission'
+              schema:
+                $ref: '#/components/schemas/Permission'
   /vehicles/{vehicle_id}/location:
     parameters:
       - name: vehicle_id
@@ -229,8 +236,9 @@ paths:
         '200':
           description: A list of vehicles
           content:
-            application/json: 
-              $ref: '#/components/schemas/Location'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Location'
   /vehicles/{vehicle_id}/odometer:
     parameters:
       - name: vehicle_id
@@ -271,7 +279,8 @@ paths:
           description: return odometer reading
           content:
             application/json: 
-              $ref: '#/components/schemas/Odometer'
+              schema:
+                $ref: '#/components/schemas/Odometer'
     
   /vehicles/{vehicle_id}/fuel:
     parameters:
@@ -322,7 +331,8 @@ paths:
           description: return fuel tank reading
           content:
             application/json: 
-              $ref: '#/components/schemas/FuelTank'
+              schema:
+                $ref: '#/components/schemas/FuelTank'
   /vehicles/{vehicle_id}/tires/pressure:
     parameters:
       - name: vehicle_id
@@ -374,7 +384,8 @@ paths:
           description: return Pressure reading
           content:
             application/json: 
-              $ref: '#/components/schemas/TirePressure'
+              schema:
+                $ref: '#/components/schemas/TirePressure'
 
   /vehicles/{vehicle_id}/engine/oil:
     parameters:
@@ -394,7 +405,8 @@ paths:
           description: return engine oil reading
           content:
             application/json: 
-              $ref: '#/components/schemas/EngineOil'
+              schema:
+                $ref: '#/components/schemas/EngineOil'
     
   /vehicles/{vehicle_id}/charge:
     parameters:
@@ -414,7 +426,8 @@ paths:
           description: return EV Charge reading
           content:
             application/json: 
-              $ref: '#/components/schemas/ChargeStatus'
+              schema: 
+                $ref: '#/components/schemas/ChargeStatus'
     
   /vehicles/{vehicle_id}/battery:
     parameters:
@@ -434,7 +447,8 @@ paths:
           description: return EV Battery Level reading
           content:
             application/json: 
-              $ref: '#/components/schemas/BatteryLevel'
+              schema:
+                $ref: '#/components/schemas/BatteryLevel'
     
   /vehicles/{vehicle_id}/battery/capacity:
     parameters:
@@ -454,7 +468,8 @@ paths:
           description: return EV Battery Capacity reading
           content:
             application/json: 
-              $ref: '#/components/schemas/BatteryCapacity'
+              schema:
+                $ref: '#/components/schemas/BatteryCapacity'
    
   /vehicles/{vehicle_id}/application:
     parameters:
@@ -509,7 +524,8 @@ paths:
           description: return Compatibility
           content:
             application/json: 
-              $ref: '#/components/schemas/CompatibilityResponse'
+              schema:
+                $ref: '#/components/schemas/CompatibilityResponse'
 
   /vehicles/{vehicle_id}/security:
     parameters:
@@ -534,7 +550,8 @@ paths:
           description: return Compatibility
           content:
             application/json: 
-              $ref: '#/components/schemas/SecurityResponse'
+              schema:
+                $ref: '#/components/schemas/SecurityResponse'
     
 components: 
   securitySchemes: 
