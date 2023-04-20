@@ -3,18 +3,25 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
+import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class GetOdometerRequest extends SpeakeasyBase {
   @SpeakeasyMetadata({
     data: "pathParam, style=simple;explode=false;name=vehicle_id",
   })
-  vehicleId: string;
+  vehicleId?: string;
 }
 
 export class GetOdometerResponse extends SpeakeasyBase {
   @SpeakeasyMetadata()
   contentType: string;
+
+  /**
+   * return odometer reading
+   */
+  @SpeakeasyMetadata()
+  odometer?: shared.Odometer;
 
   @SpeakeasyMetadata()
   statusCode: number;

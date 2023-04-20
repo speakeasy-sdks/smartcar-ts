@@ -3,6 +3,7 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
+import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class ListCompatibilityRequest extends SpeakeasyBase {
@@ -19,6 +20,12 @@ export class ListCompatibilityRequest extends SpeakeasyBase {
 }
 
 export class ListCompatibilityResponse extends SpeakeasyBase {
+  /**
+   * return Compatibility
+   */
+  @SpeakeasyMetadata()
+  compatibilityResponse?: shared.CompatibilityResponse;
+
   @SpeakeasyMetadata()
   contentType: string;
 

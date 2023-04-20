@@ -1,6 +1,6 @@
 configVersion: 1.0.0
 management:
-  docChecksum: 156eb91e71ac2f1a0acd3fb7eb7c1f0f
+  docChecksum: 686003ba6934443b36c267465bfed6d3
   docVersion: 1.0.0
   speakeasyVersion: 1.21.4
   generationVersion: 2.19.1
@@ -9,6 +9,6 @@ generation:
   sdkClassName: Smartcar
   singleTagPerOp: false
 typescript:
-  version: 2.1.0
+  version: 2.1.1
   author: smartcar
   packageName: SmartCar

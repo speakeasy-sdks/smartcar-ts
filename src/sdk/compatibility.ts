@@ -4,6 +4,7 @@
 
 import * as utils from "../internal/utils";
 import * as operations from "./models/operations";
+import * as shared from "./models/shared";
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 
 /**
@@ -16,6 +17,7 @@ export class Compatibility {
   _language: string;
   _sdkVersion: string;
   _genVersion: string;
+  _globals: any;
 
   constructor(
     defaultClient: AxiosInstance,
@@ -23,7 +25,8 @@ export class Compatibility {
     serverURL: string,
     language: string,
     sdkVersion: string,
-    genVersion: string
+    genVersion: string,
+    globals: any
   ) {
     this._defaultClient = defaultClient;
     this._securityClient = securityClient;
@@ -31,6 +34,7 @@ export class Compatibility {
     this._language = language;
     this._sdkVersion = sdkVersion;
     this._genVersion = genVersion;
+    this._globals = globals;
   }
 
   /**
@@ -85,7 +89,7 @@ export class Compatibility {
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
 
-    const queryParams: string = utils.serializeQueryParams(req);
+    const queryParams: string = utils.serializeQueryParams(req, this._globals);
 
     const r = client.request({
       url: url + queryParams,
@@ -106,6 +110,12 @@ export class Compatibility {
         });
       switch (true) {
         case httpRes?.status == 200:
+          if (utils.matchContentType(contentType, `application/json`)) {
+            res.compatibilityResponse = utils.objectToClass(
+              httpRes?.data,
+              shared.CompatibilityResponse
+            );
+          }
           break;
       }
 

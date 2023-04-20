@@ -3,13 +3,14 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
+import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class GetTirePressureRequest extends SpeakeasyBase {
   @SpeakeasyMetadata({
     data: "pathParam, style=simple;explode=false;name=vehicle_id",
   })
-  vehicleId: string;
+  vehicleId?: string;
 }
 
 export class GetTirePressureResponse extends SpeakeasyBase {
@@ -21,4 +22,10 @@ export class GetTirePressureResponse extends SpeakeasyBase {
 
   @SpeakeasyMetadata()
   rawResponse?: AxiosResponse;
+
+  /**
+   * return Pressure reading
+   */
+  @SpeakeasyMetadata()
+  tirePressure?: shared.TirePressure;
 }

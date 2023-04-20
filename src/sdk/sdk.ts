@@ -29,6 +29,10 @@ export type SDKProps = {
    */
   security?: shared.Security;
   /**
+   * Allows setting the vehicleId parameter for all supported operations
+   */
+  vehicleId?: string;
+  /**
    * Allows overriding the default axios client used by the SDK
    */
   defaultClient?: AxiosInstance;
@@ -62,7 +66,7 @@ export class Smartcar {
   public _securityClient: AxiosInstance;
   public _serverURL: string;
   private _language = "typescript";
-  private _sdkVersion = "2.1.0";
+  private _sdkVersion = "2.1.1";
   private _genVersion = "2.19.1";
   private _globals: any;
 
@@ -83,13 +87,23 @@ export class Smartcar {
       this._securityClient = this._defaultClient;
     }
 
+    this._globals = {
+      parameters: {
+        queryParam: {},
+        pathParam: {
+          vehicleId: props?.vehicleId,
+        },
+      },
+    };
+
     this.compatibility = new Compatibility(
       this._defaultClient,
       this._securityClient,
       this._serverURL,
       this._language,
       this._sdkVersion,
-      this._genVersion
+      this._genVersion,
+      this._globals
     );
 
     this.evs = new Evs(
@@ -98,7 +112,8 @@ export class Smartcar {
       this._serverURL,
       this._language,
       this._sdkVersion,
-      this._genVersion
+      this._genVersion,
+      this._globals
     );
 
     this.vehicles = new Vehicles(
@@ -107,7 +122,8 @@ export class Smartcar {
       this._serverURL,
       this._language,
       this._sdkVersion,
-      this._genVersion
+      this._genVersion,
+      this._globals
     );
   }
 }

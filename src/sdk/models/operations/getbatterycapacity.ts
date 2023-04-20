@@ -3,16 +3,23 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
+import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class GetBatteryCapacityRequest extends SpeakeasyBase {
   @SpeakeasyMetadata({
     data: "pathParam, style=simple;explode=false;name=vehicle_id",
   })
-  vehicleId: string;
+  vehicleId?: string;
 }
 
 export class GetBatteryCapacityResponse extends SpeakeasyBase {
+  /**
+   * return EV Battery Capacity reading
+   */
+  @SpeakeasyMetadata()
+  batteryCapacity?: shared.BatteryCapacity;
+
   @SpeakeasyMetadata()
   contentType: string;
 

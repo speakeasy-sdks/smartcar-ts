@@ -3,6 +3,7 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
+import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class ListVehiclesRequest extends SpeakeasyBase {
@@ -30,4 +31,10 @@ export class ListVehiclesResponse extends SpeakeasyBase {
 
   @SpeakeasyMetadata()
   rawResponse?: AxiosResponse;
+
+  /**
+   * A list of vehicles
+   */
+  @SpeakeasyMetadata()
+  vehiclesResponse?: shared.VehiclesResponse;
 }

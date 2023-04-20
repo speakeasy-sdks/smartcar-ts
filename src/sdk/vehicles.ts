@@ -17,6 +17,7 @@ export class Vehicles {
   _language: string;
   _sdkVersion: string;
   _genVersion: string;
+  _globals: any;
 
   constructor(
     defaultClient: AxiosInstance,
@@ -24,7 +25,8 @@ export class Vehicles {
     serverURL: string,
     language: string,
     sdkVersion: string,
-    genVersion: string
+    genVersion: string,
+    globals: any
   ) {
     this._defaultClient = defaultClient;
     this._securityClient = securityClient;
@@ -32,6 +34,7 @@ export class Vehicles {
     this._language = language;
     this._sdkVersion = sdkVersion;
     this._genVersion = genVersion;
+    this._globals = globals;
   }
 
   /**
@@ -60,7 +63,8 @@ export class Vehicles {
     const url: string = utils.generateURL(
       baseURL,
       "/vehicles/{vehicle_id}/application",
-      req
+      req,
+      this._globals
     );
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
@@ -127,7 +131,8 @@ export class Vehicles {
     const url: string = utils.generateURL(
       baseURL,
       "/vehicles/{vehicle_id}",
-      req
+      req,
+      this._globals
     );
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
@@ -194,7 +199,8 @@ export class Vehicles {
     const url: string = utils.generateURL(
       baseURL,
       "/vehicles/{vehicle_id}/engine/oil",
-      req
+      req,
+      this._globals
     );
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
@@ -218,6 +224,12 @@ export class Vehicles {
         });
       switch (true) {
         case httpRes?.status == 200:
+          if (utils.matchContentType(contentType, `application/json`)) {
+            res.engineOil = utils.objectToClass(
+              httpRes?.data,
+              shared.EngineOil
+            );
+          }
           break;
       }
 
@@ -257,7 +269,8 @@ export class Vehicles {
     const url: string = utils.generateURL(
       baseURL,
       "/vehicles/{vehicle_id}/fuel",
-      req
+      req,
+      this._globals
     );
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
@@ -281,6 +294,9 @@ export class Vehicles {
         });
       switch (true) {
         case httpRes?.status == 200:
+          if (utils.matchContentType(contentType, `application/json`)) {
+            res.fuelTank = utils.objectToClass(httpRes?.data, shared.FuelTank);
+          }
           break;
       }
 
@@ -319,7 +335,8 @@ export class Vehicles {
     const url: string = utils.generateURL(
       baseURL,
       "/vehicles/{vehicle_id}/location",
-      req
+      req,
+      this._globals
     );
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
@@ -343,6 +360,9 @@ export class Vehicles {
         });
       switch (true) {
         case httpRes?.status == 200:
+          if (utils.matchContentType(contentType, `application/json`)) {
+            res.location = utils.objectToClass(httpRes?.data, shared.Location);
+          }
           break;
       }
 
@@ -380,7 +400,8 @@ export class Vehicles {
     const url: string = utils.generateURL(
       baseURL,
       "/vehicles/{vehicle_id}/odometer",
-      req
+      req,
+      this._globals
     );
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
@@ -404,6 +425,9 @@ export class Vehicles {
         });
       switch (true) {
         case httpRes?.status == 200:
+          if (utils.matchContentType(contentType, `application/json`)) {
+            res.odometer = utils.objectToClass(httpRes?.data, shared.Odometer);
+          }
           break;
       }
 
@@ -448,12 +472,13 @@ export class Vehicles {
     const url: string = utils.generateURL(
       baseURL,
       "/vehicles/{vehicle_id}/permissions",
-      req
+      req,
+      this._globals
     );
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
 
-    const queryParams: string = utils.serializeQueryParams(req);
+    const queryParams: string = utils.serializeQueryParams(req, this._globals);
 
     const r = client.request({
       url: url + queryParams,
@@ -474,6 +499,12 @@ export class Vehicles {
         });
       switch (true) {
         case httpRes?.status == 200:
+          if (utils.matchContentType(contentType, `application/json`)) {
+            res.permission = utils.objectToClass(
+              httpRes?.data,
+              shared.Permission
+            );
+          }
           break;
       }
 
@@ -513,7 +544,8 @@ export class Vehicles {
     const url: string = utils.generateURL(
       baseURL,
       "/vehicles/{vehicle_id}/tires/pressure",
-      req
+      req,
+      this._globals
     );
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
@@ -537,6 +569,12 @@ export class Vehicles {
         });
       switch (true) {
         case httpRes?.status == 200:
+          if (utils.matchContentType(contentType, `application/json`)) {
+            res.tirePressure = utils.objectToClass(
+              httpRes?.data,
+              shared.TirePressure
+            );
+          }
           break;
       }
 
@@ -582,7 +620,7 @@ export class Vehicles {
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
 
-    const queryParams: string = utils.serializeQueryParams(req);
+    const queryParams: string = utils.serializeQueryParams(req, this._globals);
 
     const r = client.request({
       url: url + queryParams,
@@ -603,6 +641,12 @@ export class Vehicles {
         });
       switch (true) {
         case httpRes?.status == 200:
+          if (utils.matchContentType(contentType, `application/json`)) {
+            res.vehiclesResponse = utils.objectToClass(
+              httpRes?.data,
+              shared.VehiclesResponse
+            );
+          }
           break;
       }
 
@@ -640,7 +684,8 @@ export class Vehicles {
     const url: string = utils.generateURL(
       baseURL,
       "/vehicles/{vehicle_id}/security",
-      req
+      req,
+      this._globals
     );
 
     let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
@@ -682,6 +727,12 @@ export class Vehicles {
         });
       switch (true) {
         case httpRes?.status == 200:
+          if (utils.matchContentType(contentType, `application/json`)) {
+            res.securityResponse = utils.objectToClass(
+              httpRes?.data,
+              shared.SecurityResponse
+            );
+          }
           break;
       }
 
