@@ -4,6 +4,7 @@
 
 import * as utils from "../internal/utils";
 import * as operations from "./models/operations";
+import * as shared from "./models/shared";
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 
 /**
@@ -16,6 +17,7 @@ export class Evs {
   _language: string;
   _sdkVersion: string;
   _genVersion: string;
+  _globals: any;
 
   constructor(
     defaultClient: AxiosInstance,
@@ -23,7 +25,8 @@ export class Evs {
     serverURL: string,
     language: string,
     sdkVersion: string,
-    genVersion: string
+    genVersion: string,
+    globals: any
   ) {
     this._defaultClient = defaultClient;
     this._securityClient = securityClient;
@@ -31,6 +34,7 @@ export class Evs {
     this._language = language;
     this._sdkVersion = sdkVersion;
     this._genVersion = genVersion;
+    this._globals = globals;
   }
 
   /**
@@ -63,7 +67,8 @@ export class Evs {
     const url: string = utils.generateURL(
       baseURL,
       "/vehicles/{vehicle_id}/battery/capacity",
-      req
+      req,
+      this._globals
     );
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
@@ -87,6 +92,12 @@ export class Evs {
         });
       switch (true) {
         case httpRes?.status == 200:
+          if (utils.matchContentType(contentType, `application/json`)) {
+            res.batteryCapacity = utils.objectToClass(
+              httpRes?.data,
+              shared.BatteryCapacity
+            );
+          }
           break;
       }
 
@@ -125,7 +136,8 @@ export class Evs {
     const url: string = utils.generateURL(
       baseURL,
       "/vehicles/{vehicle_id}/battery",
-      req
+      req,
+      this._globals
     );
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
@@ -149,6 +161,12 @@ export class Evs {
         });
       switch (true) {
         case httpRes?.status == 200:
+          if (utils.matchContentType(contentType, `application/json`)) {
+            res.batteryLevel = utils.objectToClass(
+              httpRes?.data,
+              shared.BatteryLevel
+            );
+          }
           break;
       }
 
@@ -187,7 +205,8 @@ export class Evs {
     const url: string = utils.generateURL(
       baseURL,
       "/vehicles/{vehicle_id}/charge",
-      req
+      req,
+      this._globals
     );
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
@@ -211,6 +230,12 @@ export class Evs {
         });
       switch (true) {
         case httpRes?.status == 200:
+          if (utils.matchContentType(contentType, `application/json`)) {
+            res.chargeStatus = utils.objectToClass(
+              httpRes?.data,
+              shared.ChargeStatus
+            );
+          }
           break;
       }
 

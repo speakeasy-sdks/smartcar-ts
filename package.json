@@ -1,6 +1,6 @@
 {
   "name": "SmartCar",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "author": "smartcar",
   "scripts": {
     "prepare": "tsc --build"

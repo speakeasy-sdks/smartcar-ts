@@ -3,18 +3,25 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
+import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class GetLocationRequest extends SpeakeasyBase {
   @SpeakeasyMetadata({
     data: "pathParam, style=simple;explode=false;name=vehicle_id",
   })
-  vehicleId: string;
+  vehicleId?: string;
 }
 
 export class GetLocationResponse extends SpeakeasyBase {
   @SpeakeasyMetadata()
   contentType: string;
+
+  /**
+   * A list of vehicles
+   */
+  @SpeakeasyMetadata()
+  location?: shared.Location;
 
   @SpeakeasyMetadata()
   statusCode: number;
