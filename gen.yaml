@@ -2,13 +2,13 @@ configVersion: 1.0.0
 management:
   docChecksum: 156eb91e71ac2f1a0acd3fb7eb7c1f0f
   docVersion: 1.0.0
-  speakeasyVersion: 1.20.2
-  generationVersion: 2.18.2
+  speakeasyVersion: 1.21.4
+  generationVersion: 2.19.1
 generation:
   telemetryEnabled: false
   sdkClassName: Smartcar
   singleTagPerOp: false
 typescript:
-  version: 2.0.1
+  version: 2.1.0
   author: smartcar
   packageName: SmartCar
