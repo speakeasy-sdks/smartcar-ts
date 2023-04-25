@@ -2,8 +2,8 @@ name: Generate
 
 permissions:
   checks: write
-  pull-requests: write
   contents: write
+  pull-requests: write
   statuses: write
 
 on:
@@ -22,12 +22,11 @@ jobs:
     with:
       force: ${{ github.event.inputs.force }}
       speakeasy_version: latest
-      openapi_doc_location: ./openapi/openapi.yaml
+      openapi_doc_location: https://prod.speakeasyapi.dev/v1/apis/SmartCar/version/v2/schema/download
       openapi_doc_auth_header: x-api-key
       languages: |-
         - typescript
       mode: pr
-      publish_typescript: true
     secrets:
       speakeasy_api_key: ${{ secrets.SPEAKEASY_PROD_API_KEY }}
       github_access_token: ${{ secrets.GITHUB_TOKEN }}
