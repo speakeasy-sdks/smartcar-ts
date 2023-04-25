@@ -45,3 +45,9 @@ Based on:
 - Speakeasy CLI 1.23.1 (2.21.1) https://github.com/speakeasy-api/speakeasy
 ### Releases
 - [NPM v2.3.0] https://www.npmjs.com/package/SmartCar/v/2.3.0 - .
+
+## 2023-04-25 21:02:38
+### Changes
+Based on:
+- OpenAPI Doc 1.0.0 
+- Speakeasy CLI 1.23.1 (2.21.1) https://github.com/speakeasy-api/speakeasy

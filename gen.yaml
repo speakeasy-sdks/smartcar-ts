@@ -9,6 +9,6 @@ generation:
   sdkClassName: Smartcar
   singleTagPerOp: false
 typescript:
-  version: 2.3.0
+  version: 2.3.1
   author: smartcar
   packageName: SmartCar
