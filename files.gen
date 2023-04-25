@@ -52,4 +52,8 @@ src/sdk/models/shared/securityresponse.ts
 src/sdk/models/shared/securityaction.ts
 src/sdk/models/shared/security.ts
 src/sdk/models/shared/index.ts
+docs/smartcar/README.md
+docs/compatibility/README.md
+docs/evs/README.md
+docs/vehicles/README.md
 USAGE.md

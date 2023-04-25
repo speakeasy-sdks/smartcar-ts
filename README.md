@@ -27,13 +27,10 @@ yarn add SmartCar
 ## SDK Example Usage
 <!-- Start SDK Example Usage -->
 ```typescript
-import {
-  GetLocationRequest,
-  GetLocationResponse
-} from "SmartCar/dist/sdk/models/operations";
-
-import { AxiosError } from "axios";
 import { Smartcar } from "SmartCar";
+import { GetLocationRequest, GetLocationResponse } from "SmartCar/dist/sdk/models/operations";
+import { AxiosError } from "axios";
+
 const sdk = new Smartcar({
   security: {
     bearerAuth: "Bearer YOUR_BEARER_TOKEN_HERE",
@@ -44,7 +41,9 @@ const sdk = new Smartcar({
 const req: GetLocationRequest = {};
 
 sdk.vehicles.getLocation(req).then((res: GetLocationResponse | AxiosError) => {
-   // handle response
+  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+    // handle response
+  }
 });
 ```
 <!-- End SDK Example Usage -->
@@ -53,28 +52,28 @@ sdk.vehicles.getLocation(req).then((res: GetLocationResponse | AxiosError) => {
 ## Available Resources and Operations
 
 
-### compatibility
+### [compatibility](docs/compatibility/README.md)
 
-* `listCompatibility` - Compatibility
+* [listCompatibility](docs/compatibility/README.md#listcompatibility) - Compatibility
 
-### evs
+### [evs](docs/evs/README.md)
 
-* `getBatteryCapacity` - EV Battery Capacity
-* `getBatteryLevel` - EV Battery Level
-* `getChargingStatus` - EV Charging Status
+* [getBatteryCapacity](docs/evs/README.md#getbatterycapacity) - EV Battery Capacity
+* [getBatteryLevel](docs/evs/README.md#getbatterylevel) - EV Battery Level
+* [getChargingStatus](docs/evs/README.md#getchargingstatus) - EV Charging Status
 
-### vehicles
+### [vehicles](docs/vehicles/README.md)
 
-* `disconnect` - Revoke Access
-* `get` - Vehicle Info
-* `getEngineOil` - Engine Oil Life
-* `getFuelTank` - Fuel Tank (US Only)
-* `getLocation` - Location
-* `getOdometer` - Odometer
-* `getPermissions` - Application Permissions
-* `getTirePressure` - Tire pressure
-* `listVehicles` - All Vehicles
-* `lockUnlock` - Unlock Vehicle
+* [disconnect](docs/vehicles/README.md#disconnect) - Revoke Access
+* [get](docs/vehicles/README.md#get) - Vehicle Info
+* [getEngineOil](docs/vehicles/README.md#getengineoil) - Engine Oil Life
+* [getFuelTank](docs/vehicles/README.md#getfueltank) - Fuel Tank (US Only)
+* [getLocation](docs/vehicles/README.md#getlocation) - Location
+* [getOdometer](docs/vehicles/README.md#getodometer) - Odometer
+* [getPermissions](docs/vehicles/README.md#getpermissions) - Application Permissions
+* [getTirePressure](docs/vehicles/README.md#gettirepressure) - Tire pressure
+* [listVehicles](docs/vehicles/README.md#listvehicles) - All Vehicles
+* [lockUnlock](docs/vehicles/README.md#lockunlock) - Unlock Vehicle
 <!-- End SDK Available Operations -->
 
 ### Maturity
