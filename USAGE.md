@@ -1,12 +1,9 @@
 <!-- Start SDK Example Usage -->
 ```typescript
-import {
-  GetLocationRequest,
-  GetLocationResponse
-} from "SmartCar/dist/sdk/models/operations";
-
-import { AxiosError } from "axios";
 import { Smartcar } from "SmartCar";
+import { GetLocationRequest, GetLocationResponse } from "SmartCar/dist/sdk/models/operations";
+import { AxiosError } from "axios";
+
 const sdk = new Smartcar({
   security: {
     bearerAuth: "Bearer YOUR_BEARER_TOKEN_HERE",
@@ -17,7 +14,9 @@ const sdk = new Smartcar({
 const req: GetLocationRequest = {};
 
 sdk.vehicles.getLocation(req).then((res: GetLocationResponse | AxiosError) => {
-   // handle response
+  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+    // handle response
+  }
 });
 ```
 <!-- End SDK Example Usage -->
