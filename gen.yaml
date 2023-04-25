@@ -7,8 +7,9 @@ management:
 generation:
   telemetryEnabled: false
   sdkClassName: Smartcar
+  sdkFlattening: true
   singleTagPerOp: false
 typescript:
-  version: 2.1.1
+  version: ""
   author: smartcar
-  packageName: 
+  packageName: smartcar
