@@ -48,9 +48,9 @@ __Enum Values__
 ### Example Usage
 
 ```typescript
-import { Smartcar } from "SmartCar";
-import { ListCompatibilityRequest, ListCompatibilityResponse } from "SmartCar/dist/sdk/models/operations";
 import { AxiosError } from "axios";
+import { Smartcar } from "smartcar";
+import { ListCompatibilityRequest, ListCompatibilityResponse } from "smartcar/dist/sdk/models/operations";
 
 const sdk = new Smartcar({
   security: {

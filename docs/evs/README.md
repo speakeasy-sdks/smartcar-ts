@@ -29,9 +29,9 @@ __Response body__
 ### Example Usage
 
 ```typescript
-import { Smartcar } from "SmartCar";
-import { GetBatteryCapacityRequest, GetBatteryCapacityResponse } from "SmartCar/dist/sdk/models/operations";
 import { AxiosError } from "axios";
+import { Smartcar } from "smartcar";
+import { GetBatteryCapacityRequest, GetBatteryCapacityResponse } from "smartcar/dist/sdk/models/operations";
 
 const sdk = new Smartcar({
   security: {
@@ -69,9 +69,9 @@ __Response body__
 ### Example Usage
 
 ```typescript
-import { Smartcar } from "SmartCar";
-import { GetBatteryLevelRequest, GetBatteryLevelResponse } from "SmartCar/dist/sdk/models/operations";
 import { AxiosError } from "axios";
+import { Smartcar } from "smartcar";
+import { GetBatteryLevelRequest, GetBatteryLevelResponse } from "smartcar/dist/sdk/models/operations";
 
 const sdk = new Smartcar({
   security: {
@@ -109,10 +109,10 @@ __Response body__
 ### Example Usage
 
 ```typescript
-import { Smartcar } from "SmartCar";
-import { GetChargingStatusRequest, GetChargingStatusResponse } from "SmartCar/dist/sdk/models/operations";
-import { ChargeStatusStateEnum } from "SmartCar/dist/sdk/models/shared";
 import { AxiosError } from "axios";
+import { Smartcar } from "smartcar";
+import { GetChargingStatusRequest, GetChargingStatusResponse } from "smartcar/dist/sdk/models/operations";
+import { ChargeStatusStateEnum } from "smartcar/dist/sdk/models/shared";
 
 const sdk = new Smartcar({
   security: {

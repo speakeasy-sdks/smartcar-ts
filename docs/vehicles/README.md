@@ -32,9 +32,9 @@ __Response body__
 ### Example Usage
 
 ```typescript
-import { Smartcar } from "SmartCar";
-import { DisconnectRequest, DisconnectResponse, DisconnectStatusEnum } from "SmartCar/dist/sdk/models/operations";
 import { AxiosError } from "axios";
+import { Smartcar } from "smartcar";
+import { DisconnectRequest, DisconnectResponse, DisconnectStatusEnum } from "smartcar/dist/sdk/models/operations";
 
 const sdk = new Smartcar({
   security: {
@@ -74,9 +74,9 @@ __Response Body__
 ### Example Usage
 
 ```typescript
-import { Smartcar } from "SmartCar";
-import { GetVehicleRequest, GetVehicleResponse } from "SmartCar/dist/sdk/models/operations";
 import { AxiosError } from "axios";
+import { Smartcar } from "smartcar";
+import { GetVehicleRequest, GetVehicleResponse } from "smartcar/dist/sdk/models/operations";
 
 const sdk = new Smartcar({
   security: {
@@ -113,9 +113,9 @@ __Response body__
 ### Example Usage
 
 ```typescript
-import { Smartcar } from "SmartCar";
-import { GetEngineOilRequest, GetEngineOilResponse } from "SmartCar/dist/sdk/models/operations";
 import { AxiosError } from "axios";
+import { Smartcar } from "smartcar";
+import { GetEngineOilRequest, GetEngineOilResponse } from "smartcar/dist/sdk/models/operations";
 
 const sdk = new Smartcar({
   security: {
@@ -154,9 +154,9 @@ __Response Body__
 ### Example Usage
 
 ```typescript
-import { Smartcar } from "SmartCar";
-import { GetFuelTankRequest, GetFuelTankResponse } from "SmartCar/dist/sdk/models/operations";
 import { AxiosError } from "axios";
+import { Smartcar } from "smartcar";
+import { GetFuelTankRequest, GetFuelTankResponse } from "smartcar/dist/sdk/models/operations";
 
 const sdk = new Smartcar({
   security: {
@@ -194,9 +194,9 @@ __Response Body__
 ### Example Usage
 
 ```typescript
-import { Smartcar } from "SmartCar";
-import { GetLocationRequest, GetLocationResponse } from "SmartCar/dist/sdk/models/operations";
 import { AxiosError } from "axios";
+import { Smartcar } from "smartcar";
+import { GetLocationRequest, GetLocationResponse } from "smartcar/dist/sdk/models/operations";
 
 const sdk = new Smartcar({
   security: {
@@ -233,9 +233,9 @@ __Response Body__
 ### Example Usage
 
 ```typescript
-import { Smartcar } from "SmartCar";
-import { GetOdometerRequest, GetOdometerResponse } from "SmartCar/dist/sdk/models/operations";
 import { AxiosError } from "axios";
+import { Smartcar } from "smartcar";
+import { GetOdometerRequest, GetOdometerResponse } from "smartcar/dist/sdk/models/operations";
 
 const sdk = new Smartcar({
   security: {
@@ -279,9 +279,9 @@ __Response Body__
 ### Example Usage
 
 ```typescript
-import { Smartcar } from "SmartCar";
-import { GetPermissionsRequest, GetPermissionsResponse } from "SmartCar/dist/sdk/models/operations";
 import { AxiosError } from "axios";
+import { Smartcar } from "smartcar";
+import { GetPermissionsRequest, GetPermissionsResponse } from "smartcar/dist/sdk/models/operations";
 
 const sdk = new Smartcar({
   security: {
@@ -323,9 +323,9 @@ __Example Response__
 ### Example Usage
 
 ```typescript
-import { Smartcar } from "SmartCar";
-import { GetTirePressureRequest, GetTirePressureResponse } from "SmartCar/dist/sdk/models/operations";
 import { AxiosError } from "axios";
+import { Smartcar } from "smartcar";
+import { GetTirePressureRequest, GetTirePressureResponse } from "smartcar/dist/sdk/models/operations";
 
 const sdk = new Smartcar({
   security: {
@@ -369,9 +369,9 @@ __Response Body__
 ### Example Usage
 
 ```typescript
-import { Smartcar } from "SmartCar";
-import { ListVehiclesRequest, ListVehiclesResponse } from "SmartCar/dist/sdk/models/operations";
 import { AxiosError } from "axios";
+import { Smartcar } from "smartcar";
+import { ListVehiclesRequest, ListVehiclesResponse } from "smartcar/dist/sdk/models/operations";
 
 const sdk = new Smartcar({
   security: {
@@ -411,10 +411,10 @@ __Response body__
 ### Example Usage
 
 ```typescript
-import { Smartcar } from "SmartCar";
-import { LockUnlockRequest, LockUnlockResponse } from "SmartCar/dist/sdk/models/operations";
-import { SecurityActionActionEnum, SecurityResponseStatusEnum } from "SmartCar/dist/sdk/models/shared";
 import { AxiosError } from "axios";
+import { Smartcar } from "smartcar";
+import { LockUnlockRequest, LockUnlockResponse } from "smartcar/dist/sdk/models/operations";
+import { SecurityActionActionEnum, SecurityResponseStatusEnum } from "smartcar/dist/sdk/models/shared";
 
 const sdk = new Smartcar({
   security: {

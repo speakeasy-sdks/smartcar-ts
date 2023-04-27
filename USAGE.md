@@ -1,8 +1,8 @@
 <!-- Start SDK Example Usage -->
 ```typescript
-import { Smartcar } from "SmartCar";
-import { GetLocationRequest, GetLocationResponse } from "SmartCar/dist/sdk/models/operations";
 import { AxiosError } from "axios";
+import { Smartcar } from "smartcar";
+import { GetLocationRequest, GetLocationResponse } from "smartcar/dist/sdk/models/operations";
 
 const sdk = new Smartcar({
   security: {
