@@ -29,9 +29,8 @@ __Response body__
 ### Example Usage
 
 ```typescript
-import { AxiosError } from "axios";
 import { Smartcar } from "smartcar";
-import { GetBatteryCapacityRequest, GetBatteryCapacityResponse } from "smartcar/dist/sdk/models/operations";
+import { GetBatteryCapacityResponse } from "smartcar/dist/sdk/models/operations";
 
 const sdk = new Smartcar({
   security: {
@@ -40,10 +39,8 @@ const sdk = new Smartcar({
   vehicleId: "36ab27d0-fd9d-4455-823a-ce30af709ffc",
 });
 
-const req: GetBatteryCapacityRequest = {};
-
-sdk.evs.getBatteryCapacity(req).then((res: GetBatteryCapacityResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+sdk.evs.getBatteryCapacity({}).then((res: GetBatteryCapacityResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -69,9 +66,8 @@ __Response body__
 ### Example Usage
 
 ```typescript
-import { AxiosError } from "axios";
 import { Smartcar } from "smartcar";
-import { GetBatteryLevelRequest, GetBatteryLevelResponse } from "smartcar/dist/sdk/models/operations";
+import { GetBatteryLevelResponse } from "smartcar/dist/sdk/models/operations";
 
 const sdk = new Smartcar({
   security: {
@@ -80,10 +76,8 @@ const sdk = new Smartcar({
   vehicleId: "36ab27d0-fd9d-4455-823a-ce30af709ffc",
 });
 
-const req: GetBatteryLevelRequest = {};
-
-sdk.evs.getBatteryLevel(req).then((res: GetBatteryLevelResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+sdk.evs.getBatteryLevel({}).then((res: GetBatteryLevelResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -109,9 +103,8 @@ __Response body__
 ### Example Usage
 
 ```typescript
-import { AxiosError } from "axios";
 import { Smartcar } from "smartcar";
-import { GetChargingStatusRequest, GetChargingStatusResponse } from "smartcar/dist/sdk/models/operations";
+import { GetChargingStatusResponse } from "smartcar/dist/sdk/models/operations";
 import { ChargeStatusStateEnum } from "smartcar/dist/sdk/models/shared";
 
 const sdk = new Smartcar({
@@ -121,10 +114,8 @@ const sdk = new Smartcar({
   vehicleId: "36ab27d0-fd9d-4455-823a-ce30af709ffc",
 });
 
-const req: GetChargingStatusRequest = {};
-
-sdk.evs.getChargingStatus(req).then((res: GetChargingStatusResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+sdk.evs.getChargingStatus({}).then((res: GetChargingStatusResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });

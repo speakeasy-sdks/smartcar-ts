@@ -32,9 +32,8 @@ __Response body__
 ### Example Usage
 
 ```typescript
-import { AxiosError } from "axios";
 import { Smartcar } from "smartcar";
-import { DisconnectRequest, DisconnectResponse, DisconnectStatusEnum } from "smartcar/dist/sdk/models/operations";
+import { DisconnectResponse, DisconnectStatusEnum } from "smartcar/dist/sdk/models/operations";
 
 const sdk = new Smartcar({
   security: {
@@ -43,10 +42,8 @@ const sdk = new Smartcar({
   vehicleId: "36ab27d0-fd9d-4455-823a-ce30af709ffc",
 });
 
-const req: DisconnectRequest = {};
-
-sdk.vehicles.disconnect(req).then((res: DisconnectResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+sdk.vehicles.disconnect({}).then((res: DisconnectResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -74,9 +71,8 @@ __Response Body__
 ### Example Usage
 
 ```typescript
-import { AxiosError } from "axios";
 import { Smartcar } from "smartcar";
-import { GetVehicleRequest, GetVehicleResponse } from "smartcar/dist/sdk/models/operations";
+import { GetVehicleResponse } from "smartcar/dist/sdk/models/operations";
 
 const sdk = new Smartcar({
   security: {
@@ -85,10 +81,8 @@ const sdk = new Smartcar({
   vehicleId: "36ab27d0-fd9d-4455-823a-ce30af709ffc",
 });
 
-const req: GetVehicleRequest = {};
-
-sdk.vehicles.get(req).then((res: GetVehicleResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+sdk.vehicles.get({}).then((res: GetVehicleResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -113,9 +107,8 @@ __Response body__
 ### Example Usage
 
 ```typescript
-import { AxiosError } from "axios";
 import { Smartcar } from "smartcar";
-import { GetEngineOilRequest, GetEngineOilResponse } from "smartcar/dist/sdk/models/operations";
+import { GetEngineOilResponse } from "smartcar/dist/sdk/models/operations";
 
 const sdk = new Smartcar({
   security: {
@@ -124,10 +117,8 @@ const sdk = new Smartcar({
   vehicleId: "36ab27d0-fd9d-4455-823a-ce30af709ffc",
 });
 
-const req: GetEngineOilRequest = {};
-
-sdk.vehicles.getEngineOil(req).then((res: GetEngineOilResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+sdk.vehicles.getEngineOil({}).then((res: GetEngineOilResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -154,9 +145,8 @@ __Response Body__
 ### Example Usage
 
 ```typescript
-import { AxiosError } from "axios";
 import { Smartcar } from "smartcar";
-import { GetFuelTankRequest, GetFuelTankResponse } from "smartcar/dist/sdk/models/operations";
+import { GetFuelTankResponse } from "smartcar/dist/sdk/models/operations";
 
 const sdk = new Smartcar({
   security: {
@@ -165,10 +155,8 @@ const sdk = new Smartcar({
   vehicleId: "36ab27d0-fd9d-4455-823a-ce30af709ffc",
 });
 
-const req: GetFuelTankRequest = {};
-
-sdk.vehicles.getFuelTank(req).then((res: GetFuelTankResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+sdk.vehicles.getFuelTank({}).then((res: GetFuelTankResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -194,9 +182,8 @@ __Response Body__
 ### Example Usage
 
 ```typescript
-import { AxiosError } from "axios";
 import { Smartcar } from "smartcar";
-import { GetLocationRequest, GetLocationResponse } from "smartcar/dist/sdk/models/operations";
+import { GetLocationResponse } from "smartcar/dist/sdk/models/operations";
 
 const sdk = new Smartcar({
   security: {
@@ -205,10 +192,8 @@ const sdk = new Smartcar({
   vehicleId: "36ab27d0-fd9d-4455-823a-ce30af709ffc",
 });
 
-const req: GetLocationRequest = {};
-
-sdk.vehicles.getLocation(req).then((res: GetLocationResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+sdk.vehicles.getLocation({}).then((res: GetLocationResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -233,9 +218,8 @@ __Response Body__
 ### Example Usage
 
 ```typescript
-import { AxiosError } from "axios";
 import { Smartcar } from "smartcar";
-import { GetOdometerRequest, GetOdometerResponse } from "smartcar/dist/sdk/models/operations";
+import { GetOdometerResponse } from "smartcar/dist/sdk/models/operations";
 
 const sdk = new Smartcar({
   security: {
@@ -244,10 +228,8 @@ const sdk = new Smartcar({
   vehicleId: "36ab27d0-fd9d-4455-823a-ce30af709ffc",
 });
 
-const req: GetOdometerRequest = {};
-
-sdk.vehicles.getOdometer(req).then((res: GetOdometerResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+sdk.vehicles.getOdometer({}).then((res: GetOdometerResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -279,9 +261,8 @@ __Response Body__
 ### Example Usage
 
 ```typescript
-import { AxiosError } from "axios";
 import { Smartcar } from "smartcar";
-import { GetPermissionsRequest, GetPermissionsResponse } from "smartcar/dist/sdk/models/operations";
+import { GetPermissionsResponse } from "smartcar/dist/sdk/models/operations";
 
 const sdk = new Smartcar({
   security: {
@@ -290,13 +271,11 @@ const sdk = new Smartcar({
   vehicleId: "36ab27d0-fd9d-4455-823a-ce30af709ffc",
 });
 
-const req: GetPermissionsRequest = {
+sdk.vehicles.getPermissions({
   limit: 548814,
   offset: 592845,
-};
-
-sdk.vehicles.getPermissions(req).then((res: GetPermissionsResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: GetPermissionsResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -323,9 +302,8 @@ __Example Response__
 ### Example Usage
 
 ```typescript
-import { AxiosError } from "axios";
 import { Smartcar } from "smartcar";
-import { GetTirePressureRequest, GetTirePressureResponse } from "smartcar/dist/sdk/models/operations";
+import { GetTirePressureResponse } from "smartcar/dist/sdk/models/operations";
 
 const sdk = new Smartcar({
   security: {
@@ -334,10 +312,8 @@ const sdk = new Smartcar({
   vehicleId: "36ab27d0-fd9d-4455-823a-ce30af709ffc",
 });
 
-const req: GetTirePressureRequest = {};
-
-sdk.vehicles.getTirePressure(req).then((res: GetTirePressureResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+sdk.vehicles.getTirePressure({}).then((res: GetTirePressureResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -369,9 +345,8 @@ __Response Body__
 ### Example Usage
 
 ```typescript
-import { AxiosError } from "axios";
 import { Smartcar } from "smartcar";
-import { ListVehiclesRequest, ListVehiclesResponse } from "smartcar/dist/sdk/models/operations";
+import { ListVehiclesResponse } from "smartcar/dist/sdk/models/operations";
 
 const sdk = new Smartcar({
   security: {
@@ -380,13 +355,11 @@ const sdk = new Smartcar({
   vehicleId: "36ab27d0-fd9d-4455-823a-ce30af709ffc",
 });
 
-const req: ListVehiclesRequest = {
+sdk.vehicles.listVehicles({
   limit: 715190,
   offset: 844266,
-};
-
-sdk.vehicles.listVehicles(req).then((res: ListVehiclesResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: ListVehiclesResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -411,9 +384,8 @@ __Response body__
 ### Example Usage
 
 ```typescript
-import { AxiosError } from "axios";
 import { Smartcar } from "smartcar";
-import { LockUnlockRequest, LockUnlockResponse } from "smartcar/dist/sdk/models/operations";
+import { LockUnlockResponse } from "smartcar/dist/sdk/models/operations";
 import { SecurityActionActionEnum, SecurityResponseStatusEnum } from "smartcar/dist/sdk/models/shared";
 
 const sdk = new Smartcar({
@@ -423,14 +395,12 @@ const sdk = new Smartcar({
   vehicleId: "36ab27d0-fd9d-4455-823a-ce30af709ffc",
 });
 
-const req: LockUnlockRequest = {
+sdk.vehicles.lockUnlock({
   securityAction: {
     action: SecurityActionActionEnum.Unlock,
   },
-};
-
-sdk.vehicles.lockUnlock(req).then((res: LockUnlockResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: LockUnlockResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
