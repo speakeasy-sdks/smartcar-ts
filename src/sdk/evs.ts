@@ -55,7 +55,7 @@ export class Evs {
    * |---	|---	|---	|
    * |  capacity|   number|  The total capacity of the vehicle's battery (in kilowatt-hours). 	|
    */
-  getBatteryCapacity(
+  async getBatteryCapacity(
     req: operations.GetBatteryCapacityRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.GetBatteryCapacityResponse> {
@@ -73,36 +73,37 @@ export class Evs {
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "get",
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.GetBatteryCapacityResponse =
-        new operations.GetBatteryCapacityResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 200:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.batteryCapacity = utils.objectToClass(
-              httpRes?.data,
-              shared.BatteryCapacity
-            );
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.GetBatteryCapacityResponse =
+      new operations.GetBatteryCapacityResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.batteryCapacity = utils.objectToClass(
+            httpRes?.data,
+            shared.BatteryCapacity
+          );
+        }
+        break;
+    }
+
+    return res;
   }
 
   /**
@@ -124,7 +125,7 @@ export class Evs {
    * |  `percentRemaining`|   number|  An EV battery’s state of charge (in percent). 	|
    * |   `range`|   number	|   The estimated remaining distance the vehicle can travel (in kilometers by default or in miles using the [sc-unit-system](https://smartcar.com/docs/api?version=v2.0&language=cURL#request-headers).	|
    */
-  getBatteryLevel(
+  async getBatteryLevel(
     req: operations.GetBatteryLevelRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.GetBatteryLevelResponse> {
@@ -142,36 +143,37 @@ export class Evs {
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "get",
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.GetBatteryLevelResponse =
-        new operations.GetBatteryLevelResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 200:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.batteryLevel = utils.objectToClass(
-              httpRes?.data,
-              shared.BatteryLevel
-            );
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.GetBatteryLevelResponse =
+      new operations.GetBatteryLevelResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.batteryLevel = utils.objectToClass(
+            httpRes?.data,
+            shared.BatteryLevel
+          );
+        }
+        break;
+    }
+
+    return res;
   }
 
   /**
@@ -193,7 +195,7 @@ export class Evs {
    * |  `isPluggedIn` 	|   boolean	|  Indicates whether a charging cable is currently plugged into the vehicle’s charge port. 	|
    * |   `state`	|   string	|   Indicates whether the vehicle is currently charging. Options: `CHARGING` `FULLY_CHARGED` `NOT_CHARGING`	|
    */
-  getChargingStatus(
+  async getChargingStatus(
     req: operations.GetChargingStatusRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.GetChargingStatusResponse> {
@@ -211,35 +213,36 @@ export class Evs {
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "get",
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.GetChargingStatusResponse =
-        new operations.GetChargingStatusResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 200:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.chargeStatus = utils.objectToClass(
-              httpRes?.data,
-              shared.ChargeStatus
-            );
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.GetChargingStatusResponse =
+      new operations.GetChargingStatusResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.chargeStatus = utils.objectToClass(
+            httpRes?.data,
+            shared.ChargeStatus
+          );
+        }
+        break;
+    }
+
+    return res;
   }
 }

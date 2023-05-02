@@ -48,9 +48,8 @@ __Enum Values__
 ### Example Usage
 
 ```typescript
-import { Smartcar } from "SmartCar";
-import { ListCompatibilityRequest, ListCompatibilityResponse } from "SmartCar/dist/sdk/models/operations";
-import { AxiosError } from "axios";
+import { Smartcar } from "smartcar";
+import { ListCompatibilityResponse } from "smartcar/dist/sdk/models/operations";
 
 const sdk = new Smartcar({
   security: {
@@ -59,14 +58,12 @@ const sdk = new Smartcar({
   vehicleId: "36ab27d0-fd9d-4455-823a-ce30af709ffc",
 });
 
-const req: ListCompatibilityRequest = {
+sdk.compatibility.listCompatibility({
   country: "{country}",
   scope: "{scope}",
   vin: "{vin}",
-};
-
-sdk.compatibility.listCompatibility(req).then((res: ListCompatibilityResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: ListCompatibilityResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });

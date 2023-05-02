@@ -76,7 +76,7 @@ export class Compatibility {
    * |  capabilities[].reason|   VEHICLE_NOT_CAPABLE|  TThe vehicle does not support this feature.|
    * |  |   SMARTCAR_NOT_CAPABLE|  Smartcar is not capable of supporting the given feature on the vehicle's make.|
    */
-  listCompatibility(
+  async listCompatibility(
     req: operations.ListCompatibilityRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.ListCompatibilityResponse> {
@@ -91,35 +91,36 @@ export class Compatibility {
 
     const queryParams: string = utils.serializeQueryParams(req, this._globals);
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url + queryParams,
       method: "get",
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.ListCompatibilityResponse =
-        new operations.ListCompatibilityResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 200:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.compatibilityResponse = utils.objectToClass(
-              httpRes?.data,
-              shared.CompatibilityResponse
-            );
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.ListCompatibilityResponse =
+      new operations.ListCompatibilityResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.compatibilityResponse = utils.objectToClass(
+            httpRes?.data,
+            shared.CompatibilityResponse
+          );
+        }
+        break;
+    }
+
+    return res;
   }
 }

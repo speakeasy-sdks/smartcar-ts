@@ -51,7 +51,7 @@ export class Vehicles {
    * |---	|---	|---	|
    * |  status|   string|  If the request is successful, Smartcar will return “success” (HTTP 200 status).|
    */
-  disconnect(
+  async disconnect(
     req: operations.DisconnectRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.DisconnectResponse> {
@@ -69,33 +69,34 @@ export class Vehicles {
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "delete",
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.DisconnectResponse =
-        new operations.DisconnectResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 200:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.status = httpRes?.data;
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.DisconnectResponse =
+      new operations.DisconnectResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.status = httpRes?.data;
+        }
+        break;
+    }
+
+    return res;
   }
 
   /**
@@ -119,7 +120,7 @@ export class Vehicles {
    * |`model`|integer|The model of the vehicle.|
    * |`year`|integer|The model year.|
    */
-  get(
+  async get(
     req: operations.GetVehicleRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.GetVehicleResponse> {
@@ -137,36 +138,37 @@ export class Vehicles {
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "get",
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.GetVehicleResponse =
-        new operations.GetVehicleResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 200:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.vehicleInfo = utils.objectToClass(
-              httpRes?.data,
-              shared.VehicleInfo
-            );
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.GetVehicleResponse =
+      new operations.GetVehicleResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.vehicleInfo = utils.objectToClass(
+            httpRes?.data,
+            shared.VehicleInfo
+          );
+        }
+        break;
+    }
+
+    return res;
   }
 
   /**
@@ -187,7 +189,7 @@ export class Vehicles {
    * |---	|---	|---	|
    * |  `lifeRemaining`|   number|  The engine oil’s remaining life span (as a percentage). Oil life is based on the current quality of the oil. (in percent).|
    */
-  getEngineOil(
+  async getEngineOil(
     req: operations.GetEngineOilRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.GetEngineOilResponse> {
@@ -205,36 +207,34 @@ export class Vehicles {
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "get",
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.GetEngineOilResponse =
-        new operations.GetEngineOilResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 200:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.engineOil = utils.objectToClass(
-              httpRes?.data,
-              shared.EngineOil
-            );
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.GetEngineOilResponse =
+      new operations.GetEngineOilResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.engineOil = utils.objectToClass(httpRes?.data, shared.EngineOil);
+        }
+        break;
+    }
+
+    return res;
   }
 
   /**
@@ -257,7 +257,7 @@ export class Vehicles {
    * |`percentRemaining`|number|The remaining level of fuel in the tank (in percent).|
    * |`amountRemaining`|number|The amount of fuel in the tank (in liters by default or in gallons (U.S.) using the [sc-unit-system](https://smartcar.com/docs/api?version=v2.0&language=cURL#request-headers)).|
    */
-  getFuelTank(
+  async getFuelTank(
     req: operations.GetFuelTankRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.GetFuelTankResponse> {
@@ -275,33 +275,34 @@ export class Vehicles {
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "get",
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.GetFuelTankResponse =
-        new operations.GetFuelTankResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 200:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.fuelTank = utils.objectToClass(httpRes?.data, shared.FuelTank);
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.GetFuelTankResponse =
+      new operations.GetFuelTankResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.fuelTank = utils.objectToClass(httpRes?.data, shared.FuelTank);
+        }
+        break;
+    }
+
+    return res;
   }
 
   /**
@@ -323,7 +324,7 @@ export class Vehicles {
    * |`latitude`|number|The latitude (in degrees).|
    * |`longitude`|number|The longitude (in degrees).|
    */
-  getLocation(
+  async getLocation(
     req: operations.GetLocationRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.GetLocationResponse> {
@@ -341,33 +342,34 @@ export class Vehicles {
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "get",
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.GetLocationResponse =
-        new operations.GetLocationResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 200:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.location = utils.objectToClass(httpRes?.data, shared.Location);
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.GetLocationResponse =
+      new operations.GetLocationResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.location = utils.objectToClass(httpRes?.data, shared.Location);
+        }
+        break;
+    }
+
+    return res;
   }
 
   /**
@@ -388,7 +390,7 @@ export class Vehicles {
    * |--|--|--|
    * |`distance`|number|The current odometer of the vehicle (in kilometers by default or in miles using the [sc-unit-system](https://smartcar.com/docs/api?version=v2.0&language=cURL#request-headers)).|
    */
-  getOdometer(
+  async getOdometer(
     req: operations.GetOdometerRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.GetOdometerResponse> {
@@ -406,33 +408,34 @@ export class Vehicles {
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "get",
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.GetOdometerResponse =
-        new operations.GetOdometerResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 200:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.odometer = utils.objectToClass(httpRes?.data, shared.Odometer);
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.GetOdometerResponse =
+      new operations.GetOdometerResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.odometer = utils.objectToClass(httpRes?.data, shared.Odometer);
+        }
+        break;
+    }
+
+    return res;
   }
 
   /**
@@ -460,7 +463,7 @@ export class Vehicles {
    * |`paging.count`|integer|The total number of elements for the entire query (not just the given page).|
    * |`paging.offset`|integer|The current start index of the returned list of elements.|
    */
-  getPermissions(
+  async getPermissions(
     req: operations.GetPermissionsRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.GetPermissionsResponse> {
@@ -480,36 +483,37 @@ export class Vehicles {
 
     const queryParams: string = utils.serializeQueryParams(req, this._globals);
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url + queryParams,
       method: "get",
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.GetPermissionsResponse =
-        new operations.GetPermissionsResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 200:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.permission = utils.objectToClass(
-              httpRes?.data,
-              shared.Permission
-            );
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.GetPermissionsResponse =
+      new operations.GetPermissionsResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.permission = utils.objectToClass(
+            httpRes?.data,
+            shared.Permission
+          );
+        }
+        break;
+    }
+
+    return res;
   }
 
   /**
@@ -532,7 +536,7 @@ export class Vehicles {
    * |`backLeft`|number|The current air pressure of the back left tire (in kilopascals by default or in pounds per square inch using the [sc-unit-system](https://smartcar.com/docs/api?version=v2.0&language=cURL#request-headers)).|
    * |`backRight`|number|The current air pressure of the back right tire (in kilopascals by default or in pounds per square inch using the [sc-unit-system](https://smartcar.com/docs/api?version=v2.0&language=cURL#request-headers)).|
    */
-  getTirePressure(
+  async getTirePressure(
     req: operations.GetTirePressureRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.GetTirePressureResponse> {
@@ -550,36 +554,37 @@ export class Vehicles {
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "get",
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.GetTirePressureResponse =
-        new operations.GetTirePressureResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 200:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.tirePressure = utils.objectToClass(
-              httpRes?.data,
-              shared.TirePressure
-            );
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.GetTirePressureResponse =
+      new operations.GetTirePressureResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.tirePressure = utils.objectToClass(
+            httpRes?.data,
+            shared.TirePressure
+          );
+        }
+        break;
+    }
+
+    return res;
   }
 
   /**
@@ -607,7 +612,7 @@ export class Vehicles {
    * |`paging.count`|integer|The total number of elements for the entire query (not just the given page).|
    * |`paging.offset`|integer|The current start index of the returned list of elements.|
    */
-  listVehicles(
+  async listVehicles(
     req: operations.ListVehiclesRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.ListVehiclesResponse> {
@@ -622,36 +627,37 @@ export class Vehicles {
 
     const queryParams: string = utils.serializeQueryParams(req, this._globals);
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url + queryParams,
       method: "get",
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.ListVehiclesResponse =
-        new operations.ListVehiclesResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 200:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.vehiclesResponse = utils.objectToClass(
-              httpRes?.data,
-              shared.VehiclesResponse
-            );
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.ListVehiclesResponse =
+      new operations.ListVehiclesResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.vehiclesResponse = utils.objectToClass(
+            httpRes?.data,
+            shared.VehiclesResponse
+          );
+        }
+        break;
+    }
+
+    return res;
   }
 
   /**
@@ -672,7 +678,7 @@ export class Vehicles {
    * |---	|---	|---	|
    * |  status|   string|  If the request is successful, Smartcar will return “success” (HTTP 200 status).|
    */
-  lockUnlock(
+  async lockUnlock(
     req: operations.LockUnlockRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.LockUnlockResponse> {
@@ -706,7 +712,8 @@ export class Vehicles {
 
     const headers = { ...reqBodyHeaders, ...config?.headers };
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "post",
       headers: headers,
@@ -714,29 +721,29 @@ export class Vehicles {
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.LockUnlockResponse =
-        new operations.LockUnlockResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 200:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.securityResponse = utils.objectToClass(
-              httpRes?.data,
-              shared.SecurityResponse
-            );
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.LockUnlockResponse =
+      new operations.LockUnlockResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.securityResponse = utils.objectToClass(
+            httpRes?.data,
+            shared.SecurityResponse
+          );
+        }
+        break;
+    }
+
+    return res;
   }
 }
