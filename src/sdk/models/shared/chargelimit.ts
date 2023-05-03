@@ -5,11 +5,11 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose } from "class-transformer";
 
-export class BatteryCapacity extends SpeakeasyBase {
+export class ChargeLimit extends SpeakeasyBase {
   /**
-   * The total capacity of the vehicle's battery (in kilowatt-hours).
+   * The level at which the vehicle should stop charging and be considered fully charged (in percent).
    */
   @SpeakeasyMetadata()
-  @Expose({ name: "capacity" })
-  capacity?: number;
+  @Expose({ name: "limit" })
+  limit?: number;
 }

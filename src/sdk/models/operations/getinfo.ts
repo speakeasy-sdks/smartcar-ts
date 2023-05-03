@@ -6,17 +6,7 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
-export class LockUnlockRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "request, media_type=application/json" })
-  securityAction?: shared.SecurityAction;
-
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=vehicle_id",
-  })
-  vehicleId?: string;
-}
-
-export class LockUnlockResponse extends SpeakeasyBase {
+export class GetInfoResponse extends SpeakeasyBase {
   @SpeakeasyMetadata()
   contentType: string;
 
@@ -27,8 +17,8 @@ export class LockUnlockResponse extends SpeakeasyBase {
   rawResponse?: AxiosResponse;
 
   /**
-   * return Compatibility
+   * return User's information
    */
   @SpeakeasyMetadata()
-  successResponse?: shared.SuccessResponse;
+  userInfo?: shared.UserInfo;
 }

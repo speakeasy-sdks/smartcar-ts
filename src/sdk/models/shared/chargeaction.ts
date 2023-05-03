@@ -5,11 +5,13 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose } from "class-transformer";
 
-export class BatteryCapacity extends SpeakeasyBase {
-  /**
-   * The total capacity of the vehicle's battery (in kilowatt-hours).
-   */
+export enum ChargeActionActionEnum {
+  Start = "START",
+  Stop = "STOP",
+}
+
+export class ChargeAction extends SpeakeasyBase {
   @SpeakeasyMetadata()
-  @Expose({ name: "capacity" })
-  capacity?: number;
+  @Expose({ name: "action" })
+  action?: ChargeActionActionEnum;
 }

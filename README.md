@@ -49,6 +49,16 @@ sdk.vehicles.getLocation({}).then((res: GetLocationResponse) => {
 ## Available Resources and Operations
 
 
+### [cadillac](docs/cadillac/README.md)
+
+* [getChargeTime](docs/cadillac/README.md#getchargetime) - Retrieve charging completion time for a Cadillac.
+* [getVoltage](docs/cadillac/README.md#getvoltage) - Retrieve charging voltmeter time for a Cadillac.
+
+### [chevrolet](docs/chevrolet/README.md)
+
+* [getChargeTime](docs/chevrolet/README.md#getchargetime) - Retrieve charging completion time for a Chevrolet.
+* [getVoltage](docs/chevrolet/README.md#getvoltage) - Retrieve charging voltmeter time for a Chevrolet.
+
 ### [compatibility](docs/compatibility/README.md)
 
 * [listCompatibility](docs/compatibility/README.md#listcompatibility) - Compatibility
@@ -57,10 +67,18 @@ sdk.vehicles.getLocation({}).then((res: GetLocationResponse) => {
 
 * [getBatteryCapacity](docs/evs/README.md#getbatterycapacity) - EV Battery Capacity
 * [getBatteryLevel](docs/evs/README.md#getbatterylevel) - EV Battery Level
+* [getChargingLimit](docs/evs/README.md#getcharginglimit) - EV Charging Limit
 * [getChargingStatus](docs/evs/README.md#getchargingstatus) - EV Charging Status
+* [setChargingLimit](docs/evs/README.md#setcharginglimit) - Set EV Charging Limit
+* [startStopCharge](docs/evs/README.md#startstopcharge) - Start or stop charging an electric vehicle. Please contact us to request early access.
+
+### [user](docs/user/README.md)
+
+* [getInfo](docs/user/README.md#getinfo) - User Info
 
 ### [vehicles](docs/vehicles/README.md)
 
+* [batch](docs/vehicles/README.md#batch) - Batch
 * [disconnect](docs/vehicles/README.md#disconnect) - Revoke Access
 * [get](docs/vehicles/README.md#get) - Vehicle Info
 * [getEngineOil](docs/vehicles/README.md#getengineoil) - Engine Oil Life
@@ -69,8 +87,9 @@ sdk.vehicles.getLocation({}).then((res: GetLocationResponse) => {
 * [getOdometer](docs/vehicles/README.md#getodometer) - Odometer
 * [getPermissions](docs/vehicles/README.md#getpermissions) - Application Permissions
 * [getTirePressure](docs/vehicles/README.md#gettirepressure) - Tire pressure
+* [getVin](docs/vehicles/README.md#getvin) - Returns the vehicle’s manufacturer identifier.
 * [listVehicles](docs/vehicles/README.md#listvehicles) - All Vehicles
-* [lockUnlock](docs/vehicles/README.md#lockunlock) - Unlock Vehicle
+* [lockUnlock](docs/vehicles/README.md#lockunlock) - Lock/Unlock Vehicle
 <!-- End SDK Available Operations -->
 
 ### Maturity

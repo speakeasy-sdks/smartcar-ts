@@ -3,9 +3,12 @@
  */
 
 import * as utils from "../internal/utils";
+import { Cadillac } from "./cadillac";
+import { Chevrolet } from "./chevrolet";
 import { Compatibility } from "./compatibility";
 import { Evs } from "./evs";
 import * as shared from "./models/shared";
+import { User } from "./user";
 import { Vehicles } from "./vehicles";
 import axios from "axios";
 import { AxiosInstance } from "axios";
@@ -49,6 +52,8 @@ export type SDKProps = {
  * We've detailed how to get started with Smartcar in Postman [here](https://www.notion.so/smartcarapi/How-do-I-use-Postman-with-Smartcar-b8e8483bae8b43a986715582beb54bd4).
  */
 export class Smartcar {
+  public cadillac: Cadillac;
+  public chevrolet: Chevrolet;
   /**
    * Operations about compatibility
    */
@@ -57,6 +62,7 @@ export class Smartcar {
    * Operations about electric vehicles
    */
   public evs: Evs;
+  public user: User;
   /**
    * Operations about vehicles
    */
@@ -66,7 +72,7 @@ export class Smartcar {
   public _securityClient: AxiosInstance;
   public _serverURL: string;
   private _language = "typescript";
-  private _sdkVersion = "2.6.0";
+  private _sdkVersion = "2.6.1";
   private _genVersion = "2.24.0";
   private _globals: any;
 
@@ -96,6 +102,26 @@ export class Smartcar {
       },
     };
 
+    this.cadillac = new Cadillac(
+      this._defaultClient,
+      this._securityClient,
+      this._serverURL,
+      this._language,
+      this._sdkVersion,
+      this._genVersion,
+      this._globals
+    );
+
+    this.chevrolet = new Chevrolet(
+      this._defaultClient,
+      this._securityClient,
+      this._serverURL,
+      this._language,
+      this._sdkVersion,
+      this._genVersion,
+      this._globals
+    );
+
     this.compatibility = new Compatibility(
       this._defaultClient,
       this._securityClient,
@@ -107,6 +133,16 @@ export class Smartcar {
     );
 
     this.evs = new Evs(
+      this._defaultClient,
+      this._securityClient,
+      this._serverURL,
+      this._language,
+      this._sdkVersion,
+      this._genVersion,
+      this._globals
+    );
+
+    this.user = new User(
       this._defaultClient,
       this._securityClient,
       this._serverURL,

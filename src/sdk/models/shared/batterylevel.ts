@@ -5,9 +5,6 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose } from "class-transformer";
 
-/**
- * return EV Battery Level reading
- */
 export class BatteryLevel extends SpeakeasyBase {
   /**
    * An EV battery’s state of charge (in percent).
