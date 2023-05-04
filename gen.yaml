@@ -10,6 +10,6 @@ generation:
   singleTagPerOp: false
 typescript:
   version: 2.7.0
+  maxMethodParams: 5
   author: smartcar
-  maxMethodParams: 0
   packageName: smartcar
