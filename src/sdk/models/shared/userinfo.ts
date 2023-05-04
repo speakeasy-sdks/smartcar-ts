@@ -5,11 +5,11 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose } from "class-transformer";
 
-export class BatteryCapacity extends SpeakeasyBase {
-  /**
-   * The total capacity of the vehicle's battery (in kilowatt-hours).
-   */
+/**
+ * A user ID (UUID v4).
+ */
+export class UserInfo extends SpeakeasyBase {
   @SpeakeasyMetadata()
-  @Expose({ name: "capacity" })
-  capacity?: number;
+  @Expose({ name: "id" })
+  id?: string;
 }

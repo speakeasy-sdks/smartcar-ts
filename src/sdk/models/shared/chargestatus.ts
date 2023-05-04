@@ -11,9 +11,6 @@ export enum ChargeStatusStateEnum {
   NotCharging = "NOT_CHARGING",
 }
 
-/**
- * return EV Charge reading
- */
 export class ChargeStatus extends SpeakeasyBase {
   /**
    * Indicates whether a charging cable is currently plugged into the vehicle’s charge port.

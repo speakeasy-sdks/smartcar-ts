@@ -6,6 +6,7 @@ Operations about vehicles
 
 ### Available Operations
 
+* [batch](#batch) - Batch
 * [disconnect](#disconnect) - Revoke Access
 * [get](#get) - Vehicle Info
 * [getEngineOil](#getengineoil) - Engine Oil Life
@@ -14,8 +15,40 @@ Operations about vehicles
 * [getOdometer](#getodometer) - Odometer
 * [getPermissions](#getpermissions) - Application Permissions
 * [getTirePressure](#gettirepressure) - Tire pressure
+* [getVin](#getvin) - Returns the vehicle’s manufacturer identifier.
 * [listVehicles](#listvehicles) - All Vehicles
-* [lockUnlock](#lockunlock) - Unlock Vehicle
+* [lockUnlock](#lockunlock) - Lock/Unlock Vehicle
+
+## batch
+
+__Description__ Returns a list of responses from multiple Smartcar endpoints, all combined into a single request. Note: Batch requests is a paid feature. Please contact us to upgrade your plan and obtain access.
+
+### Example Usage
+
+```typescript
+import { Smartcar } from "smartcar";
+import { BatchResponse } from "smartcar/dist/sdk/models/operations";
+import { ResponseCodeEnum } from "smartcar/dist/sdk/models/shared";
+
+const sdk = new Smartcar({
+  security: {
+    bearerAuth: "Bearer YOUR_BEARER_TOKEN_HERE",
+  },
+  vehicleId: "36ab27d0-fd9d-4455-823a-ce30af709ffc",
+});
+
+sdk.vehicles.batch({
+  requestBody: [
+    "/odometer",
+    "/odometer",
+    "/odometer",
+  ],
+}).then((res: BatchResponse) => {
+  if (res.statusCode == 200) {
+    // handle response
+  }
+});
+```
 
 ## disconnect
 
@@ -272,8 +305,8 @@ const sdk = new Smartcar({
 });
 
 sdk.vehicles.getPermissions({
-  limit: 548814,
-  offset: 592845,
+  limit: 592845,
+  offset: 715190,
 }).then((res: GetPermissionsResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -319,6 +352,32 @@ sdk.vehicles.getTirePressure({}).then((res: GetTirePressureResponse) => {
 });
 ```
 
+## getVin
+
+__Description__
+
+Returns the vehicle’s manufacturer identifier.
+
+### Example Usage
+
+```typescript
+import { Smartcar } from "smartcar";
+import { GetVinResponse } from "smartcar/dist/sdk/models/operations";
+
+const sdk = new Smartcar({
+  security: {
+    bearerAuth: "Bearer YOUR_BEARER_TOKEN_HERE",
+  },
+  vehicleId: "36ab27d0-fd9d-4455-823a-ce30af709ffc",
+});
+
+sdk.vehicles.getVin({}).then((res: GetVinResponse) => {
+  if (res.statusCode == 200) {
+    // handle response
+  }
+});
+```
+
 ## listVehicles
 
 __Description__
@@ -356,8 +415,8 @@ const sdk = new Smartcar({
 });
 
 sdk.vehicles.listVehicles({
-  limit: 715190,
-  offset: 844266,
+  limit: 844266,
+  offset: 602763,
 }).then((res: ListVehiclesResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -386,7 +445,7 @@ __Response body__
 ```typescript
 import { Smartcar } from "smartcar";
 import { LockUnlockResponse } from "smartcar/dist/sdk/models/operations";
-import { SecurityActionActionEnum, SecurityResponseStatusEnum } from "smartcar/dist/sdk/models/shared";
+import { SecurityActionActionEnum, SuccessResponseStatusEnum } from "smartcar/dist/sdk/models/shared";
 
 const sdk = new Smartcar({
   security: {

@@ -38,6 +38,80 @@ export class Vehicles {
   }
 
   /**
+   * Batch
+   *
+   * @remarks
+   * __Description__ Returns a list of responses from multiple Smartcar endpoints, all combined into a single request. Note: Batch requests is a paid feature. Please contact us to upgrade your plan and obtain access.
+   */
+  async batch(
+    req: operations.BatchRequest,
+    config?: AxiosRequestConfig
+  ): Promise<operations.BatchResponse> {
+    if (!(req instanceof utils.SpeakeasyBase)) {
+      req = new operations.BatchRequest(req);
+    }
+
+    const baseURL: string = this._serverURL;
+    const url: string = utils.generateURL(
+      baseURL,
+      "/vehicles/{vehicle_id}/batch",
+      req,
+      this._globals
+    );
+
+    let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+
+    try {
+      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
+        req,
+        "requestBody",
+        "json"
+      );
+    } catch (e: unknown) {
+      if (e instanceof Error) {
+        throw new Error(`Error serializing request body, cause: ${e.message}`);
+      }
+    }
+
+    const client: AxiosInstance = this._securityClient || this._defaultClient;
+
+    const headers = { ...reqBodyHeaders, ...config?.headers };
+
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
+      url: url,
+      method: "post",
+      headers: headers,
+      data: reqBody,
+      ...config,
+    });
+
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
+
+    const res: operations.BatchResponse = new operations.BatchResponse({
+      statusCode: httpRes.status,
+      contentType: contentType,
+      rawResponse: httpRes,
+    });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.batchResponse = utils.objectToClass(
+            httpRes?.data,
+            shared.BatchResponse
+          );
+        }
+        break;
+    }
+
+    return res;
+  }
+
+  /**
    * Revoke Access
    *
    * @remarks
@@ -588,6 +662,61 @@ export class Vehicles {
   }
 
   /**
+   * Returns the vehicle’s manufacturer identifier.
+   *
+   * @remarks
+   * __Description__
+   *
+   * Returns the vehicle’s manufacturer identifier.
+   */
+  async getVin(
+    req: operations.GetVinRequest,
+    config?: AxiosRequestConfig
+  ): Promise<operations.GetVinResponse> {
+    if (!(req instanceof utils.SpeakeasyBase)) {
+      req = new operations.GetVinRequest(req);
+    }
+
+    const baseURL: string = this._serverURL;
+    const url: string = utils.generateURL(
+      baseURL,
+      "/vehicles/{vehicle_id}/vin",
+      req,
+      this._globals
+    );
+
+    const client: AxiosInstance = this._securityClient || this._defaultClient;
+
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
+      url: url,
+      method: "get",
+      ...config,
+    });
+
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
+
+    const res: operations.GetVinResponse = new operations.GetVinResponse({
+      statusCode: httpRes.status,
+      contentType: contentType,
+      rawResponse: httpRes,
+    });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.vinInfo = utils.objectToClass(httpRes?.data, shared.VinInfo);
+        }
+        break;
+    }
+
+    return res;
+  }
+
+  /**
    * All Vehicles
    *
    * @remarks
@@ -661,7 +790,7 @@ export class Vehicles {
   }
 
   /**
-   * Unlock Vehicle
+   * Lock/Unlock Vehicle
    *
    * @remarks
    * __Description__
@@ -736,9 +865,9 @@ export class Vehicles {
     switch (true) {
       case httpRes?.status == 200:
         if (utils.matchContentType(contentType, `application/json`)) {
-          res.securityResponse = utils.objectToClass(
+          res.successResponse = utils.objectToClass(
             httpRes?.data,
-            shared.SecurityResponse
+            shared.SuccessResponse
           );
         }
         break;

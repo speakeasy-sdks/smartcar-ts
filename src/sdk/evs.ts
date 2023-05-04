@@ -177,6 +177,65 @@ export class Evs {
   }
 
   /**
+   * EV Charging Limit
+   *
+   * @remarks
+   * __Description__
+   *
+   * Returns the current charge limit of an electric vehicle.
+   */
+  async getChargingLimit(
+    req: operations.GetChargingLimitRequest,
+    config?: AxiosRequestConfig
+  ): Promise<operations.GetChargingLimitResponse> {
+    if (!(req instanceof utils.SpeakeasyBase)) {
+      req = new operations.GetChargingLimitRequest(req);
+    }
+
+    const baseURL: string = this._serverURL;
+    const url: string = utils.generateURL(
+      baseURL,
+      "/vehicles/{vehicle_id}/charge/limit",
+      req,
+      this._globals
+    );
+
+    const client: AxiosInstance = this._securityClient || this._defaultClient;
+
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
+      url: url,
+      method: "get",
+      ...config,
+    });
+
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
+
+    const res: operations.GetChargingLimitResponse =
+      new operations.GetChargingLimitResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.chargeLimit = utils.objectToClass(
+            httpRes?.data,
+            shared.ChargeLimit
+          );
+        }
+        break;
+    }
+
+    return res;
+  }
+
+  /**
    * EV Charging Status
    *
    * @remarks
@@ -238,6 +297,171 @@ export class Evs {
           res.chargeStatus = utils.objectToClass(
             httpRes?.data,
             shared.ChargeStatus
+          );
+        }
+        break;
+    }
+
+    return res;
+  }
+
+  /**
+   * Set EV Charging Limit
+   *
+   * @remarks
+   * __Description__
+   *
+   * Returns the current charge limit of an electric vehicle.
+   */
+  async setChargingLimit(
+    req: operations.SetChargingLimitRequest,
+    config?: AxiosRequestConfig
+  ): Promise<operations.SetChargingLimitResponse> {
+    if (!(req instanceof utils.SpeakeasyBase)) {
+      req = new operations.SetChargingLimitRequest(req);
+    }
+
+    const baseURL: string = this._serverURL;
+    const url: string = utils.generateURL(
+      baseURL,
+      "/vehicles/{vehicle_id}/charge/limit",
+      req,
+      this._globals
+    );
+
+    let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+
+    try {
+      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
+        req,
+        "chargeLimit",
+        "json"
+      );
+    } catch (e: unknown) {
+      if (e instanceof Error) {
+        throw new Error(`Error serializing request body, cause: ${e.message}`);
+      }
+    }
+
+    const client: AxiosInstance = this._securityClient || this._defaultClient;
+
+    const headers = { ...reqBodyHeaders, ...config?.headers };
+
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
+      url: url,
+      method: "post",
+      headers: headers,
+      data: reqBody,
+      ...config,
+    });
+
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
+
+    const res: operations.SetChargingLimitResponse =
+      new operations.SetChargingLimitResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.successResponse = utils.objectToClass(
+            httpRes?.data,
+            shared.SuccessResponse
+          );
+        }
+        break;
+    }
+
+    return res;
+  }
+
+  /**
+   * Start or stop charging an electric vehicle. Please contact us to request early access.
+   *
+   * @remarks
+   * __Description__
+   *
+   * Returns the current charge status of an electric vehicle.
+   *
+   * __Permission__
+   *
+   * `read_charge`
+   *
+   * __Response body__
+   *
+   * |  Name 	|Type   	|Boolean   	|
+   * |---	|---	|---	|
+   * |  `isPluggedIn` 	|   boolean	|  Indicates whether a charging cable is currently plugged into the vehicle’s charge port. 	|
+   * |   `state`	|   string	|   Indicates whether the vehicle is currently charging. Options: `CHARGING` `FULLY_CHARGED` `NOT_CHARGING`	|
+   */
+  async startStopCharge(
+    req: operations.StartStopChargeRequest,
+    config?: AxiosRequestConfig
+  ): Promise<operations.StartStopChargeResponse> {
+    if (!(req instanceof utils.SpeakeasyBase)) {
+      req = new operations.StartStopChargeRequest(req);
+    }
+
+    const baseURL: string = this._serverURL;
+    const url: string = utils.generateURL(
+      baseURL,
+      "/vehicles/{vehicle_id}/charge",
+      req,
+      this._globals
+    );
+
+    let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+
+    try {
+      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
+        req,
+        "chargeAction",
+        "json"
+      );
+    } catch (e: unknown) {
+      if (e instanceof Error) {
+        throw new Error(`Error serializing request body, cause: ${e.message}`);
+      }
+    }
+
+    const client: AxiosInstance = this._securityClient || this._defaultClient;
+
+    const headers = { ...reqBodyHeaders, ...config?.headers };
+
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
+      url: url,
+      method: "post",
+      headers: headers,
+      data: reqBody,
+      ...config,
+    });
+
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
+
+    const res: operations.StartStopChargeResponse =
+      new operations.StartStopChargeResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.successResponse = utils.objectToClass(
+            httpRes?.data,
+            shared.SuccessResponse
           );
         }
         break;

@@ -6,17 +6,20 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
-export class LockUnlockRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "request, media_type=application/json" })
-  securityAction?: shared.SecurityAction;
-
+export class GetChargingLimitRequest extends SpeakeasyBase {
   @SpeakeasyMetadata({
     data: "pathParam, style=simple;explode=false;name=vehicle_id",
   })
   vehicleId?: string;
 }
 
-export class LockUnlockResponse extends SpeakeasyBase {
+export class GetChargingLimitResponse extends SpeakeasyBase {
+  /**
+   * return EV Charge Limit
+   */
+  @SpeakeasyMetadata()
+  chargeLimit?: shared.ChargeLimit;
+
   @SpeakeasyMetadata()
   contentType: string;
 
@@ -25,10 +28,4 @@ export class LockUnlockResponse extends SpeakeasyBase {
 
   @SpeakeasyMetadata()
   rawResponse?: AxiosResponse;
-
-  /**
-   * return Compatibility
-   */
-  @SpeakeasyMetadata()
-  successResponse?: shared.SuccessResponse;
 }
