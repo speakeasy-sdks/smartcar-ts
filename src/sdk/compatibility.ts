@@ -17,7 +17,6 @@ export class Compatibility {
   _language: string;
   _sdkVersion: string;
   _genVersion: string;
-  _globals: any;
 
   constructor(
     defaultClient: AxiosInstance,
@@ -25,8 +24,7 @@ export class Compatibility {
     serverURL: string,
     language: string,
     sdkVersion: string,
-    genVersion: string,
-    globals: any
+    genVersion: string
   ) {
     this._defaultClient = defaultClient;
     this._securityClient = securityClient;
@@ -34,7 +32,6 @@ export class Compatibility {
     this._language = language;
     this._sdkVersion = sdkVersion;
     this._genVersion = genVersion;
-    this._globals = globals;
   }
 
   /**
@@ -77,19 +74,22 @@ export class Compatibility {
    * |  |   SMARTCAR_NOT_CAPABLE|  Smartcar is not capable of supporting the given feature on the vehicle's make.|
    */
   async listCompatibility(
-    req: operations.ListCompatibilityRequest,
+    country?: string,
+    scope?: string,
+    vin?: string,
     config?: AxiosRequestConfig
   ): Promise<operations.ListCompatibilityResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.ListCompatibilityRequest(req);
-    }
-
+    const req = new operations.ListCompatibilityRequest({
+      country: country,
+      scope: scope,
+      vin: vin,
+    });
     const baseURL: string = this._serverURL;
     const url: string = baseURL.replace(/\/$/, "") + "/compatibility";
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
 
-    const queryParams: string = utils.serializeQueryParams(req, this._globals);
+    const queryParams: string = utils.serializeQueryParams(req);
 
     const httpRes: AxiosResponse = await client.request({
       validateStatus: () => true,

@@ -17,7 +17,6 @@ export class Evs {
   _language: string;
   _sdkVersion: string;
   _genVersion: string;
-  _globals: any;
 
   constructor(
     defaultClient: AxiosInstance,
@@ -25,8 +24,7 @@ export class Evs {
     serverURL: string,
     language: string,
     sdkVersion: string,
-    genVersion: string,
-    globals: any
+    genVersion: string
   ) {
     this._defaultClient = defaultClient;
     this._securityClient = securityClient;
@@ -34,7 +32,6 @@ export class Evs {
     this._language = language;
     this._sdkVersion = sdkVersion;
     this._genVersion = genVersion;
-    this._globals = globals;
   }
 
   /**
@@ -56,19 +53,17 @@ export class Evs {
    * |  capacity|   number|  The total capacity of the vehicle's battery (in kilowatt-hours). 	|
    */
   async getBatteryCapacity(
-    req: operations.GetBatteryCapacityRequest,
+    vehicleId: string,
     config?: AxiosRequestConfig
   ): Promise<operations.GetBatteryCapacityResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.GetBatteryCapacityRequest(req);
-    }
-
+    const req = new operations.GetBatteryCapacityRequest({
+      vehicleId: vehicleId,
+    });
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(
       baseURL,
       "/vehicles/{vehicle_id}/battery/capacity",
-      req,
-      this._globals
+      req
     );
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
@@ -126,19 +121,17 @@ export class Evs {
    * |   `range`|   number	|   The estimated remaining distance the vehicle can travel (in kilometers by default or in miles using the [sc-unit-system](https://smartcar.com/docs/api?version=v2.0&language=cURL#request-headers).	|
    */
   async getBatteryLevel(
-    req: operations.GetBatteryLevelRequest,
+    vehicleId: string,
     config?: AxiosRequestConfig
   ): Promise<operations.GetBatteryLevelResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.GetBatteryLevelRequest(req);
-    }
-
+    const req = new operations.GetBatteryLevelRequest({
+      vehicleId: vehicleId,
+    });
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(
       baseURL,
       "/vehicles/{vehicle_id}/battery",
-      req,
-      this._globals
+      req
     );
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
@@ -185,19 +178,17 @@ export class Evs {
    * Returns the current charge limit of an electric vehicle.
    */
   async getChargingLimit(
-    req: operations.GetChargingLimitRequest,
+    vehicleId: string,
     config?: AxiosRequestConfig
   ): Promise<operations.GetChargingLimitResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.GetChargingLimitRequest(req);
-    }
-
+    const req = new operations.GetChargingLimitRequest({
+      vehicleId: vehicleId,
+    });
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(
       baseURL,
       "/vehicles/{vehicle_id}/charge/limit",
-      req,
-      this._globals
+      req
     );
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
@@ -255,19 +246,17 @@ export class Evs {
    * |   `state`	|   string	|   Indicates whether the vehicle is currently charging. Options: `CHARGING` `FULLY_CHARGED` `NOT_CHARGING`	|
    */
   async getChargingStatus(
-    req: operations.GetChargingStatusRequest,
+    vehicleId: string,
     config?: AxiosRequestConfig
   ): Promise<operations.GetChargingStatusResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.GetChargingStatusRequest(req);
-    }
-
+    const req = new operations.GetChargingStatusRequest({
+      vehicleId: vehicleId,
+    });
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(
       baseURL,
       "/vehicles/{vehicle_id}/charge",
-      req,
-      this._globals
+      req
     );
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
@@ -314,19 +303,19 @@ export class Evs {
    * Returns the current charge limit of an electric vehicle.
    */
   async setChargingLimit(
-    req: operations.SetChargingLimitRequest,
+    vehicleId: string,
+    chargeLimit?: shared.ChargeLimit,
     config?: AxiosRequestConfig
   ): Promise<operations.SetChargingLimitResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.SetChargingLimitRequest(req);
-    }
-
+    const req = new operations.SetChargingLimitRequest({
+      vehicleId: vehicleId,
+      chargeLimit: chargeLimit,
+    });
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(
       baseURL,
       "/vehicles/{vehicle_id}/charge/limit",
-      req,
-      this._globals
+      req
     );
 
     let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
@@ -402,19 +391,19 @@ export class Evs {
    * |   `state`	|   string	|   Indicates whether the vehicle is currently charging. Options: `CHARGING` `FULLY_CHARGED` `NOT_CHARGING`	|
    */
   async startStopCharge(
-    req: operations.StartStopChargeRequest,
+    vehicleId: string,
+    chargeAction?: shared.ChargeAction,
     config?: AxiosRequestConfig
   ): Promise<operations.StartStopChargeResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.StartStopChargeRequest(req);
-    }
-
+    const req = new operations.StartStopChargeRequest({
+      vehicleId: vehicleId,
+      chargeAction: chargeAction,
+    });
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(
       baseURL,
       "/vehicles/{vehicle_id}/charge",
-      req,
-      this._globals
+      req
     );
 
     let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];

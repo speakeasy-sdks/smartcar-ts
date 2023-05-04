@@ -10,7 +10,7 @@ export class GetChargingLimitRequest extends SpeakeasyBase {
   @SpeakeasyMetadata({
     data: "pathParam, style=simple;explode=false;name=vehicle_id",
   })
-  vehicleId?: string;
+  vehicleId: string;
 }
 
 export class GetChargingLimitResponse extends SpeakeasyBase {

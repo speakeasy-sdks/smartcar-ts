@@ -10,7 +10,7 @@ export class GetBatteryCapacityRequest extends SpeakeasyBase {
   @SpeakeasyMetadata({
     data: "pathParam, style=simple;explode=false;name=vehicle_id",
   })
-  vehicleId?: string;
+  vehicleId: string;
 }
 
 export class GetBatteryCapacityResponse extends SpeakeasyBase {

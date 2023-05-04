@@ -7,6 +7,11 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class GetPermissionsRequest extends SpeakeasyBase {
+  @SpeakeasyMetadata({
+    data: "pathParam, style=simple;explode=false;name=vehicle_id",
+  })
+  vehicleId: string;
+
   /**
    * Number of vehicles to return
    */
@@ -20,11 +25,6 @@ export class GetPermissionsRequest extends SpeakeasyBase {
     data: "queryParam, style=form;explode=true;name=offset",
   })
   offset?: number;
-
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=vehicle_id",
-  })
-  vehicleId?: string;
 }
 
 export class GetPermissionsResponse extends SpeakeasyBase {

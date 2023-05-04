@@ -7,13 +7,13 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class SetChargingLimitRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "request, media_type=application/json" })
-  chargeLimit?: shared.ChargeLimit;
-
   @SpeakeasyMetadata({
     data: "pathParam, style=simple;explode=false;name=vehicle_id",
   })
-  vehicleId?: string;
+  vehicleId: string;
+
+  @SpeakeasyMetadata({ data: "request, media_type=application/json" })
+  chargeLimit?: shared.ChargeLimit;
 }
 
 export class SetChargingLimitResponse extends SpeakeasyBase {

@@ -7,13 +7,13 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class BatchRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "request, media_type=application/json" })
-  requestBody?: string[];
-
   @SpeakeasyMetadata({
     data: "pathParam, style=simple;explode=false;name=vehicle_id",
   })
-  vehicleId?: string;
+  vehicleId: string;
+
+  @SpeakeasyMetadata({ data: "request, media_type=application/json" })
+  requestBody?: string[];
 }
 
 export class BatchResponse extends SpeakeasyBase {

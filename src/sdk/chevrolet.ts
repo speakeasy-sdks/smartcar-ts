@@ -14,7 +14,6 @@ export class Chevrolet {
   _language: string;
   _sdkVersion: string;
   _genVersion: string;
-  _globals: any;
 
   constructor(
     defaultClient: AxiosInstance,
@@ -22,8 +21,7 @@ export class Chevrolet {
     serverURL: string,
     language: string,
     sdkVersion: string,
-    genVersion: string,
-    globals: any
+    genVersion: string
   ) {
     this._defaultClient = defaultClient;
     this._securityClient = securityClient;
@@ -31,7 +29,6 @@ export class Chevrolet {
     this._language = language;
     this._sdkVersion = sdkVersion;
     this._genVersion = genVersion;
-    this._globals = globals;
   }
 
   /**
@@ -43,19 +40,17 @@ export class Chevrolet {
    * When the vehicle is charging, this endpoint returns the date and time the vehicle expects to complete this charging session. When the vehicle is not charging, this endpoint results in a vehicle state error.
    */
   async getChargeTime(
-    req: operations.GetChevroletChargeTimeRequest,
+    vehicleId: string,
     config?: AxiosRequestConfig
   ): Promise<operations.GetChevroletChargeTimeResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.GetChevroletChargeTimeRequest(req);
-    }
-
+    const req = new operations.GetChevroletChargeTimeRequest({
+      vehicleId: vehicleId,
+    });
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(
       baseURL,
       "/vehicles/{vehicle_id}/chevrolet/charge/completion",
-      req,
-      this._globals
+      req
     );
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
@@ -102,19 +97,17 @@ export class Chevrolet {
    * When the vehicle is plugged in, this endpoint returns the voltage of the charger measured by the vehicle. When the vehicle is not plugged in, this endpoint results in a vehicle state error.
    */
   async getVoltage(
-    req: operations.GetChevroletVoltageRequest,
+    vehicleId: string,
     config?: AxiosRequestConfig
   ): Promise<operations.GetChevroletVoltageResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.GetChevroletVoltageRequest(req);
-    }
-
+    const req = new operations.GetChevroletVoltageRequest({
+      vehicleId: vehicleId,
+    });
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(
       baseURL,
       "/vehicles/{vehicle_id}/chevrolet/charge/voltmeter",
-      req,
-      this._globals
+      req
     );
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;

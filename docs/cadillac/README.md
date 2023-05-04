@@ -21,10 +21,9 @@ const sdk = new Smartcar({
   security: {
     bearerAuth: "Bearer YOUR_BEARER_TOKEN_HERE",
   },
-  vehicleId: "36ab27d0-fd9d-4455-823a-ce30af709ffc",
 });
 
-sdk.cadillac.getChargeTime({}).then((res: GetCadillacChargeTimeResponse) => {
+sdk.cadillac.getChargeTime("corrupti").then((res: GetCadillacChargeTimeResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -47,10 +46,9 @@ const sdk = new Smartcar({
   security: {
     bearerAuth: "Bearer YOUR_BEARER_TOKEN_HERE",
   },
-  vehicleId: "36ab27d0-fd9d-4455-823a-ce30af709ffc",
 });
 
-sdk.cadillac.getVoltage({}).then((res: GetCadillacVoltageResponse) => {
+sdk.cadillac.getVoltage("provident").then((res: GetCadillacVoltageResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
