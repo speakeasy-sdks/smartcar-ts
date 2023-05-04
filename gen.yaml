@@ -9,6 +9,7 @@ generation:
   sdkClassName: Smartcar
   singleTagPerOp: false
 typescript:
+  maxMethodParams: 5
   version: 2.6.0
   author: smartcar
   packageName: smartcar
