@@ -39,10 +39,9 @@ const sdk = new Smartcar({
   security: {
     bearerAuth: "Bearer YOUR_BEARER_TOKEN_HERE",
   },
-  vehicleId: "36ab27d0-fd9d-4455-823a-ce30af709ffc",
 });
 
-sdk.evs.getBatteryCapacity({}).then((res: GetBatteryCapacityResponse) => {
+sdk.evs.getBatteryCapacity("unde").then((res: GetBatteryCapacityResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -76,10 +75,9 @@ const sdk = new Smartcar({
   security: {
     bearerAuth: "Bearer YOUR_BEARER_TOKEN_HERE",
   },
-  vehicleId: "36ab27d0-fd9d-4455-823a-ce30af709ffc",
 });
 
-sdk.evs.getBatteryLevel({}).then((res: GetBatteryLevelResponse) => {
+sdk.evs.getBatteryLevel("nulla").then((res: GetBatteryLevelResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -102,10 +100,9 @@ const sdk = new Smartcar({
   security: {
     bearerAuth: "Bearer YOUR_BEARER_TOKEN_HERE",
   },
-  vehicleId: "36ab27d0-fd9d-4455-823a-ce30af709ffc",
 });
 
-sdk.evs.getChargingLimit({}).then((res: GetChargingLimitResponse) => {
+sdk.evs.getChargingLimit("corrupti").then((res: GetChargingLimitResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -140,10 +137,9 @@ const sdk = new Smartcar({
   security: {
     bearerAuth: "Bearer YOUR_BEARER_TOKEN_HERE",
   },
-  vehicleId: "36ab27d0-fd9d-4455-823a-ce30af709ffc",
 });
 
-sdk.evs.getChargingStatus({}).then((res: GetChargingStatusResponse) => {
+sdk.evs.getChargingStatus("illum").then((res: GetChargingStatusResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -167,13 +163,10 @@ const sdk = new Smartcar({
   security: {
     bearerAuth: "Bearer YOUR_BEARER_TOKEN_HERE",
   },
-  vehicleId: "36ab27d0-fd9d-4455-823a-ce30af709ffc",
 });
 
-sdk.evs.setChargingLimit({
-  chargeLimit: {
-    limit: 1,
-  },
+sdk.evs.setChargingLimit("vel", {
+  limit: 1,
 }).then((res: SetChargingLimitResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -209,13 +202,10 @@ const sdk = new Smartcar({
   security: {
     bearerAuth: "Bearer YOUR_BEARER_TOKEN_HERE",
   },
-  vehicleId: "36ab27d0-fd9d-4455-823a-ce30af709ffc",
 });
 
-sdk.evs.startStopCharge({
-  chargeAction: {
-    action: ChargeActionActionEnum.Start,
-  },
+sdk.evs.startStopCharge("error", {
+  action: ChargeActionActionEnum.Start,
 }).then((res: StartStopChargeResponse) => {
   if (res.statusCode == 200) {
     // handle response

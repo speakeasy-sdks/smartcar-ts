@@ -17,7 +17,6 @@ export class Vehicles {
   _language: string;
   _sdkVersion: string;
   _genVersion: string;
-  _globals: any;
 
   constructor(
     defaultClient: AxiosInstance,
@@ -25,8 +24,7 @@ export class Vehicles {
     serverURL: string,
     language: string,
     sdkVersion: string,
-    genVersion: string,
-    globals: any
+    genVersion: string
   ) {
     this._defaultClient = defaultClient;
     this._securityClient = securityClient;
@@ -34,7 +32,6 @@ export class Vehicles {
     this._language = language;
     this._sdkVersion = sdkVersion;
     this._genVersion = genVersion;
-    this._globals = globals;
   }
 
   /**
@@ -44,19 +41,19 @@ export class Vehicles {
    * __Description__ Returns a list of responses from multiple Smartcar endpoints, all combined into a single request. Note: Batch requests is a paid feature. Please contact us to upgrade your plan and obtain access.
    */
   async batch(
-    req: operations.BatchRequest,
+    vehicleId: string,
+    requestBody?: string[],
     config?: AxiosRequestConfig
   ): Promise<operations.BatchResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.BatchRequest(req);
-    }
-
+    const req = new operations.BatchRequest({
+      vehicleId: vehicleId,
+      requestBody: requestBody,
+    });
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(
       baseURL,
       "/vehicles/{vehicle_id}/batch",
-      req,
-      this._globals
+      req
     );
 
     let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
@@ -126,19 +123,17 @@ export class Vehicles {
    * |  status|   string|  If the request is successful, Smartcar will return “success” (HTTP 200 status).|
    */
   async disconnect(
-    req: operations.DisconnectRequest,
+    vehicleId: string,
     config?: AxiosRequestConfig
   ): Promise<operations.DisconnectResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.DisconnectRequest(req);
-    }
-
+    const req = new operations.DisconnectRequest({
+      vehicleId: vehicleId,
+    });
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(
       baseURL,
       "/vehicles/{vehicle_id}/application",
-      req,
-      this._globals
+      req
     );
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
@@ -195,19 +190,17 @@ export class Vehicles {
    * |`year`|integer|The model year.|
    */
   async get(
-    req: operations.GetVehicleRequest,
+    vehicleId: string,
     config?: AxiosRequestConfig
   ): Promise<operations.GetVehicleResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.GetVehicleRequest(req);
-    }
-
+    const req = new operations.GetVehicleRequest({
+      vehicleId: vehicleId,
+    });
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(
       baseURL,
       "/vehicles/{vehicle_id}",
-      req,
-      this._globals
+      req
     );
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
@@ -264,19 +257,17 @@ export class Vehicles {
    * |  `lifeRemaining`|   number|  The engine oil’s remaining life span (as a percentage). Oil life is based on the current quality of the oil. (in percent).|
    */
   async getEngineOil(
-    req: operations.GetEngineOilRequest,
+    vehicleId: string,
     config?: AxiosRequestConfig
   ): Promise<operations.GetEngineOilResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.GetEngineOilRequest(req);
-    }
-
+    const req = new operations.GetEngineOilRequest({
+      vehicleId: vehicleId,
+    });
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(
       baseURL,
       "/vehicles/{vehicle_id}/engine/oil",
-      req,
-      this._globals
+      req
     );
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
@@ -332,19 +323,17 @@ export class Vehicles {
    * |`amountRemaining`|number|The amount of fuel in the tank (in liters by default or in gallons (U.S.) using the [sc-unit-system](https://smartcar.com/docs/api?version=v2.0&language=cURL#request-headers)).|
    */
   async getFuelTank(
-    req: operations.GetFuelTankRequest,
+    vehicleId: string,
     config?: AxiosRequestConfig
   ): Promise<operations.GetFuelTankResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.GetFuelTankRequest(req);
-    }
-
+    const req = new operations.GetFuelTankRequest({
+      vehicleId: vehicleId,
+    });
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(
       baseURL,
       "/vehicles/{vehicle_id}/fuel",
-      req,
-      this._globals
+      req
     );
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
@@ -399,19 +388,17 @@ export class Vehicles {
    * |`longitude`|number|The longitude (in degrees).|
    */
   async getLocation(
-    req: operations.GetLocationRequest,
+    vehicleId: string,
     config?: AxiosRequestConfig
   ): Promise<operations.GetLocationResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.GetLocationRequest(req);
-    }
-
+    const req = new operations.GetLocationRequest({
+      vehicleId: vehicleId,
+    });
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(
       baseURL,
       "/vehicles/{vehicle_id}/location",
-      req,
-      this._globals
+      req
     );
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
@@ -465,19 +452,17 @@ export class Vehicles {
    * |`distance`|number|The current odometer of the vehicle (in kilometers by default or in miles using the [sc-unit-system](https://smartcar.com/docs/api?version=v2.0&language=cURL#request-headers)).|
    */
   async getOdometer(
-    req: operations.GetOdometerRequest,
+    vehicleId: string,
     config?: AxiosRequestConfig
   ): Promise<operations.GetOdometerResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.GetOdometerRequest(req);
-    }
-
+    const req = new operations.GetOdometerRequest({
+      vehicleId: vehicleId,
+    });
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(
       baseURL,
       "/vehicles/{vehicle_id}/odometer",
-      req,
-      this._globals
+      req
     );
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
@@ -538,24 +523,26 @@ export class Vehicles {
    * |`paging.offset`|integer|The current start index of the returned list of elements.|
    */
   async getPermissions(
-    req: operations.GetPermissionsRequest,
+    vehicleId: string,
+    limit?: number,
+    offset?: number,
     config?: AxiosRequestConfig
   ): Promise<operations.GetPermissionsResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.GetPermissionsRequest(req);
-    }
-
+    const req = new operations.GetPermissionsRequest({
+      vehicleId: vehicleId,
+      limit: limit,
+      offset: offset,
+    });
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(
       baseURL,
       "/vehicles/{vehicle_id}/permissions",
-      req,
-      this._globals
+      req
     );
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
 
-    const queryParams: string = utils.serializeQueryParams(req, this._globals);
+    const queryParams: string = utils.serializeQueryParams(req);
 
     const httpRes: AxiosResponse = await client.request({
       validateStatus: () => true,
@@ -611,19 +598,17 @@ export class Vehicles {
    * |`backRight`|number|The current air pressure of the back right tire (in kilopascals by default or in pounds per square inch using the [sc-unit-system](https://smartcar.com/docs/api?version=v2.0&language=cURL#request-headers)).|
    */
   async getTirePressure(
-    req: operations.GetTirePressureRequest,
+    vehicleId: string,
     config?: AxiosRequestConfig
   ): Promise<operations.GetTirePressureResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.GetTirePressureRequest(req);
-    }
-
+    const req = new operations.GetTirePressureRequest({
+      vehicleId: vehicleId,
+    });
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(
       baseURL,
       "/vehicles/{vehicle_id}/tires/pressure",
-      req,
-      this._globals
+      req
     );
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
@@ -670,19 +655,17 @@ export class Vehicles {
    * Returns the vehicle’s manufacturer identifier.
    */
   async getVin(
-    req: operations.GetVinRequest,
+    vehicleId: string,
     config?: AxiosRequestConfig
   ): Promise<operations.GetVinResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.GetVinRequest(req);
-    }
-
+    const req = new operations.GetVinRequest({
+      vehicleId: vehicleId,
+    });
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(
       baseURL,
       "/vehicles/{vehicle_id}/vin",
-      req,
-      this._globals
+      req
     );
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
@@ -742,19 +725,20 @@ export class Vehicles {
    * |`paging.offset`|integer|The current start index of the returned list of elements.|
    */
   async listVehicles(
-    req: operations.ListVehiclesRequest,
+    limit?: number,
+    offset?: number,
     config?: AxiosRequestConfig
   ): Promise<operations.ListVehiclesResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.ListVehiclesRequest(req);
-    }
-
+    const req = new operations.ListVehiclesRequest({
+      limit: limit,
+      offset: offset,
+    });
     const baseURL: string = this._serverURL;
     const url: string = baseURL.replace(/\/$/, "") + "/vehicles";
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
 
-    const queryParams: string = utils.serializeQueryParams(req, this._globals);
+    const queryParams: string = utils.serializeQueryParams(req);
 
     const httpRes: AxiosResponse = await client.request({
       validateStatus: () => true,
@@ -808,19 +792,19 @@ export class Vehicles {
    * |  status|   string|  If the request is successful, Smartcar will return “success” (HTTP 200 status).|
    */
   async lockUnlock(
-    req: operations.LockUnlockRequest,
+    vehicleId: string,
+    securityAction?: shared.SecurityAction,
     config?: AxiosRequestConfig
   ): Promise<operations.LockUnlockResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.LockUnlockRequest(req);
-    }
-
+    const req = new operations.LockUnlockRequest({
+      vehicleId: vehicleId,
+      securityAction: securityAction,
+    });
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(
       baseURL,
       "/vehicles/{vehicle_id}/security",
-      req,
-      this._globals
+      req
     );
 
     let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];

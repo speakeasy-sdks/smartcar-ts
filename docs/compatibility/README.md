@@ -55,14 +55,9 @@ const sdk = new Smartcar({
   security: {
     bearerAuth: "Bearer YOUR_BEARER_TOKEN_HERE",
   },
-  vehicleId: "36ab27d0-fd9d-4455-823a-ce30af709ffc",
 });
 
-sdk.compatibility.listCompatibility({
-  country: "{country}",
-  scope: "{scope}",
-  vin: "{vin}",
-}).then((res: ListCompatibilityResponse) => {
+sdk.compatibility.listCompatibility("{country}", "{scope}", "{vin}").then((res: ListCompatibilityResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }

@@ -21,10 +21,9 @@ const sdk = new Smartcar({
   security: {
     bearerAuth: "Bearer YOUR_BEARER_TOKEN_HERE",
   },
-  vehicleId: "36ab27d0-fd9d-4455-823a-ce30af709ffc",
 });
 
-sdk.chevrolet.getChargeTime({}).then((res: GetChevroletChargeTimeResponse) => {
+sdk.chevrolet.getChargeTime("distinctio").then((res: GetChevroletChargeTimeResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -47,10 +46,9 @@ const sdk = new Smartcar({
   security: {
     bearerAuth: "Bearer YOUR_BEARER_TOKEN_HERE",
   },
-  vehicleId: "36ab27d0-fd9d-4455-823a-ce30af709ffc",
 });
 
-sdk.chevrolet.getVoltage({}).then((res: GetChevroletVoltageResponse) => {
+sdk.chevrolet.getVoltage("quibusdam").then((res: GetChevroletVoltageResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }

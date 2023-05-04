@@ -32,10 +32,6 @@ export type SDKProps = {
    */
   security?: shared.Security;
   /**
-   * Allows setting the vehicleId parameter for all supported operations
-   */
-  vehicleId?: string;
-  /**
    * Allows overriding the default axios client used by the SDK
    */
   defaultClient?: AxiosInstance;
@@ -72,7 +68,7 @@ export class Smartcar {
   public _securityClient: AxiosInstance;
   public _serverURL: string;
   private _language = "typescript";
-  private _sdkVersion = "2.7.0";
+  private _sdkVersion = "2.7.1";
   private _genVersion = "2.25.0";
   private _globals: any;
 
@@ -93,23 +89,13 @@ export class Smartcar {
       this._securityClient = this._defaultClient;
     }
 
-    this._globals = {
-      parameters: {
-        queryParam: {},
-        pathParam: {
-          vehicleId: props?.vehicleId,
-        },
-      },
-    };
-
     this.cadillac = new Cadillac(
       this._defaultClient,
       this._securityClient,
       this._serverURL,
       this._language,
       this._sdkVersion,
-      this._genVersion,
-      this._globals
+      this._genVersion
     );
 
     this.chevrolet = new Chevrolet(
@@ -118,8 +104,7 @@ export class Smartcar {
       this._serverURL,
       this._language,
       this._sdkVersion,
-      this._genVersion,
-      this._globals
+      this._genVersion
     );
 
     this.compatibility = new Compatibility(
@@ -128,8 +113,7 @@ export class Smartcar {
       this._serverURL,
       this._language,
       this._sdkVersion,
-      this._genVersion,
-      this._globals
+      this._genVersion
     );
 
     this.evs = new Evs(
@@ -138,8 +122,7 @@ export class Smartcar {
       this._serverURL,
       this._language,
       this._sdkVersion,
-      this._genVersion,
-      this._globals
+      this._genVersion
     );
 
     this.user = new User(
@@ -148,8 +131,7 @@ export class Smartcar {
       this._serverURL,
       this._language,
       this._sdkVersion,
-      this._genVersion,
-      this._globals
+      this._genVersion
     );
 
     this.vehicles = new Vehicles(
@@ -158,8 +140,7 @@ export class Smartcar {
       this._serverURL,
       this._language,
       this._sdkVersion,
-      this._genVersion,
-      this._globals
+      this._genVersion
     );
   }
 }

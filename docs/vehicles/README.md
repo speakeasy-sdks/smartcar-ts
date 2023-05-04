@@ -34,16 +34,12 @@ const sdk = new Smartcar({
   security: {
     bearerAuth: "Bearer YOUR_BEARER_TOKEN_HERE",
   },
-  vehicleId: "36ab27d0-fd9d-4455-823a-ce30af709ffc",
 });
 
-sdk.vehicles.batch({
-  requestBody: [
-    "/odometer",
-    "/odometer",
-    "/odometer",
-  ],
-}).then((res: BatchResponse) => {
+sdk.vehicles.batch("deserunt", [
+  "/odometer",
+  "/odometer",
+]).then((res: BatchResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -72,10 +68,9 @@ const sdk = new Smartcar({
   security: {
     bearerAuth: "Bearer YOUR_BEARER_TOKEN_HERE",
   },
-  vehicleId: "36ab27d0-fd9d-4455-823a-ce30af709ffc",
 });
 
-sdk.vehicles.disconnect({}).then((res: DisconnectResponse) => {
+sdk.vehicles.disconnect("iure").then((res: DisconnectResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -111,10 +106,9 @@ const sdk = new Smartcar({
   security: {
     bearerAuth: "Bearer YOUR_BEARER_TOKEN_HERE",
   },
-  vehicleId: "36ab27d0-fd9d-4455-823a-ce30af709ffc",
 });
 
-sdk.vehicles.get({}).then((res: GetVehicleResponse) => {
+sdk.vehicles.get("magnam").then((res: GetVehicleResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -147,10 +141,9 @@ const sdk = new Smartcar({
   security: {
     bearerAuth: "Bearer YOUR_BEARER_TOKEN_HERE",
   },
-  vehicleId: "36ab27d0-fd9d-4455-823a-ce30af709ffc",
 });
 
-sdk.vehicles.getEngineOil({}).then((res: GetEngineOilResponse) => {
+sdk.vehicles.getEngineOil("debitis").then((res: GetEngineOilResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -185,10 +178,9 @@ const sdk = new Smartcar({
   security: {
     bearerAuth: "Bearer YOUR_BEARER_TOKEN_HERE",
   },
-  vehicleId: "36ab27d0-fd9d-4455-823a-ce30af709ffc",
 });
 
-sdk.vehicles.getFuelTank({}).then((res: GetFuelTankResponse) => {
+sdk.vehicles.getFuelTank("ipsa").then((res: GetFuelTankResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -222,10 +214,9 @@ const sdk = new Smartcar({
   security: {
     bearerAuth: "Bearer YOUR_BEARER_TOKEN_HERE",
   },
-  vehicleId: "36ab27d0-fd9d-4455-823a-ce30af709ffc",
 });
 
-sdk.vehicles.getLocation({}).then((res: GetLocationResponse) => {
+sdk.vehicles.getLocation("36ab27d0-fd9d-4455-823a-ce30af709ffc").then((res: GetLocationResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -258,10 +249,9 @@ const sdk = new Smartcar({
   security: {
     bearerAuth: "Bearer YOUR_BEARER_TOKEN_HERE",
   },
-  vehicleId: "36ab27d0-fd9d-4455-823a-ce30af709ffc",
 });
 
-sdk.vehicles.getOdometer({}).then((res: GetOdometerResponse) => {
+sdk.vehicles.getOdometer("delectus").then((res: GetOdometerResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -301,13 +291,9 @@ const sdk = new Smartcar({
   security: {
     bearerAuth: "Bearer YOUR_BEARER_TOKEN_HERE",
   },
-  vehicleId: "36ab27d0-fd9d-4455-823a-ce30af709ffc",
 });
 
-sdk.vehicles.getPermissions({
-  limit: 592845,
-  offset: 715190,
-}).then((res: GetPermissionsResponse) => {
+sdk.vehicles.getPermissions("tempora", 383441, 477665).then((res: GetPermissionsResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -342,10 +328,9 @@ const sdk = new Smartcar({
   security: {
     bearerAuth: "Bearer YOUR_BEARER_TOKEN_HERE",
   },
-  vehicleId: "36ab27d0-fd9d-4455-823a-ce30af709ffc",
 });
 
-sdk.vehicles.getTirePressure({}).then((res: GetTirePressureResponse) => {
+sdk.vehicles.getTirePressure("minus").then((res: GetTirePressureResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -368,10 +353,9 @@ const sdk = new Smartcar({
   security: {
     bearerAuth: "Bearer YOUR_BEARER_TOKEN_HERE",
   },
-  vehicleId: "36ab27d0-fd9d-4455-823a-ce30af709ffc",
 });
 
-sdk.vehicles.getVin({}).then((res: GetVinResponse) => {
+sdk.vehicles.getVin("placeat").then((res: GetVinResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -411,13 +395,9 @@ const sdk = new Smartcar({
   security: {
     bearerAuth: "Bearer YOUR_BEARER_TOKEN_HERE",
   },
-  vehicleId: "36ab27d0-fd9d-4455-823a-ce30af709ffc",
 });
 
-sdk.vehicles.listVehicles({
-  limit: 844266,
-  offset: 602763,
-}).then((res: ListVehiclesResponse) => {
+sdk.vehicles.listVehicles(528895, 479977).then((res: ListVehiclesResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -451,13 +431,10 @@ const sdk = new Smartcar({
   security: {
     bearerAuth: "Bearer YOUR_BEARER_TOKEN_HERE",
   },
-  vehicleId: "36ab27d0-fd9d-4455-823a-ce30af709ffc",
 });
 
-sdk.vehicles.lockUnlock({
-  securityAction: {
-    action: SecurityActionActionEnum.Unlock,
-  },
+sdk.vehicles.lockUnlock("excepturi", {
+  action: SecurityActionActionEnum.Unlock,
 }).then((res: LockUnlockResponse) => {
   if (res.statusCode == 200) {
     // handle response
