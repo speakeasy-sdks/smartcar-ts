@@ -68,8 +68,8 @@ export class Smartcar {
   public _securityClient: AxiosInstance;
   public _serverURL: string;
   private _language = "typescript";
-  private _sdkVersion = "2.8.1";
-  private _genVersion = "2.26.1";
+  private _sdkVersion = "2.8.2";
+  private _genVersion = "2.26.2";
   private _globals: any;
 
   constructor(props?: SDKProps) {
