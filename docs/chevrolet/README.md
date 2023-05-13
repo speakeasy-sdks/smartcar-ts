@@ -19,7 +19,7 @@ import { GetChevroletChargeTimeResponse } from "smartcar/dist/sdk/models/operati
 
 const sdk = new Smartcar({
   security: {
-    bearerAuth: "Bearer YOUR_BEARER_TOKEN_HERE",
+    bearerAuth: "YOUR_BEARER_TOKEN_HERE",
   },
 });
 
@@ -44,7 +44,7 @@ import { GetChevroletVoltageResponse } from "smartcar/dist/sdk/models/operations
 
 const sdk = new Smartcar({
   security: {
-    bearerAuth: "Bearer YOUR_BEARER_TOKEN_HERE",
+    bearerAuth: "YOUR_BEARER_TOKEN_HERE",
   },
 });
 

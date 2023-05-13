@@ -18,7 +18,7 @@ import { GetInfoResponse } from "smartcar/dist/sdk/models/operations";
 
 const sdk = new Smartcar({
   security: {
-    bearerAuth: "Bearer YOUR_BEARER_TOKEN_HERE",
+    bearerAuth: "YOUR_BEARER_TOKEN_HERE",
   },
 });
 
