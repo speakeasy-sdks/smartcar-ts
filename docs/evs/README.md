@@ -37,7 +37,7 @@ import { GetBatteryCapacityResponse } from "smartcar/dist/sdk/models/operations"
 
 const sdk = new Smartcar({
   security: {
-    bearerAuth: "Bearer YOUR_BEARER_TOKEN_HERE",
+    bearerAuth: "YOUR_BEARER_TOKEN_HERE",
   },
 });
 
@@ -73,7 +73,7 @@ import { GetBatteryLevelResponse } from "smartcar/dist/sdk/models/operations";
 
 const sdk = new Smartcar({
   security: {
-    bearerAuth: "Bearer YOUR_BEARER_TOKEN_HERE",
+    bearerAuth: "YOUR_BEARER_TOKEN_HERE",
   },
 });
 
@@ -98,7 +98,7 @@ import { GetChargingLimitResponse } from "smartcar/dist/sdk/models/operations";
 
 const sdk = new Smartcar({
   security: {
-    bearerAuth: "Bearer YOUR_BEARER_TOKEN_HERE",
+    bearerAuth: "YOUR_BEARER_TOKEN_HERE",
   },
 });
 
@@ -135,7 +135,7 @@ import { ChargeStatusStateEnum } from "smartcar/dist/sdk/models/shared";
 
 const sdk = new Smartcar({
   security: {
-    bearerAuth: "Bearer YOUR_BEARER_TOKEN_HERE",
+    bearerAuth: "YOUR_BEARER_TOKEN_HERE",
   },
 });
 
@@ -161,7 +161,7 @@ import { SuccessResponseStatusEnum } from "smartcar/dist/sdk/models/shared";
 
 const sdk = new Smartcar({
   security: {
-    bearerAuth: "Bearer YOUR_BEARER_TOKEN_HERE",
+    bearerAuth: "YOUR_BEARER_TOKEN_HERE",
   },
 });
 
@@ -200,7 +200,7 @@ import { ChargeActionActionEnum, SuccessResponseStatusEnum } from "smartcar/dist
 
 const sdk = new Smartcar({
   security: {
-    bearerAuth: "Bearer YOUR_BEARER_TOKEN_HERE",
+    bearerAuth: "YOUR_BEARER_TOKEN_HERE",
   },
 });
 

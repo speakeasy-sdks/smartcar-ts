@@ -32,7 +32,7 @@ import { ResponseCodeEnum } from "smartcar/dist/sdk/models/shared";
 
 const sdk = new Smartcar({
   security: {
-    bearerAuth: "Bearer YOUR_BEARER_TOKEN_HERE",
+    bearerAuth: "YOUR_BEARER_TOKEN_HERE",
   },
 });
 
@@ -66,7 +66,7 @@ import { DisconnectResponse, DisconnectStatusEnum } from "smartcar/dist/sdk/mode
 
 const sdk = new Smartcar({
   security: {
-    bearerAuth: "Bearer YOUR_BEARER_TOKEN_HERE",
+    bearerAuth: "YOUR_BEARER_TOKEN_HERE",
   },
 });
 
@@ -104,7 +104,7 @@ import { GetVehicleResponse } from "smartcar/dist/sdk/models/operations";
 
 const sdk = new Smartcar({
   security: {
-    bearerAuth: "Bearer YOUR_BEARER_TOKEN_HERE",
+    bearerAuth: "YOUR_BEARER_TOKEN_HERE",
   },
 });
 
@@ -139,7 +139,7 @@ import { GetEngineOilResponse } from "smartcar/dist/sdk/models/operations";
 
 const sdk = new Smartcar({
   security: {
-    bearerAuth: "Bearer YOUR_BEARER_TOKEN_HERE",
+    bearerAuth: "YOUR_BEARER_TOKEN_HERE",
   },
 });
 
@@ -176,7 +176,7 @@ import { GetFuelTankResponse } from "smartcar/dist/sdk/models/operations";
 
 const sdk = new Smartcar({
   security: {
-    bearerAuth: "Bearer YOUR_BEARER_TOKEN_HERE",
+    bearerAuth: "YOUR_BEARER_TOKEN_HERE",
   },
 });
 
@@ -212,7 +212,7 @@ import { GetLocationResponse } from "smartcar/dist/sdk/models/operations";
 
 const sdk = new Smartcar({
   security: {
-    bearerAuth: "Bearer YOUR_BEARER_TOKEN_HERE",
+    bearerAuth: "YOUR_BEARER_TOKEN_HERE",
   },
 });
 
@@ -247,7 +247,7 @@ import { GetOdometerResponse } from "smartcar/dist/sdk/models/operations";
 
 const sdk = new Smartcar({
   security: {
-    bearerAuth: "Bearer YOUR_BEARER_TOKEN_HERE",
+    bearerAuth: "YOUR_BEARER_TOKEN_HERE",
   },
 });
 
@@ -289,7 +289,7 @@ import { GetPermissionsResponse } from "smartcar/dist/sdk/models/operations";
 
 const sdk = new Smartcar({
   security: {
-    bearerAuth: "Bearer YOUR_BEARER_TOKEN_HERE",
+    bearerAuth: "YOUR_BEARER_TOKEN_HERE",
   },
 });
 
@@ -326,7 +326,7 @@ import { GetTirePressureResponse } from "smartcar/dist/sdk/models/operations";
 
 const sdk = new Smartcar({
   security: {
-    bearerAuth: "Bearer YOUR_BEARER_TOKEN_HERE",
+    bearerAuth: "YOUR_BEARER_TOKEN_HERE",
   },
 });
 
@@ -351,7 +351,7 @@ import { GetVinResponse } from "smartcar/dist/sdk/models/operations";
 
 const sdk = new Smartcar({
   security: {
-    bearerAuth: "Bearer YOUR_BEARER_TOKEN_HERE",
+    bearerAuth: "YOUR_BEARER_TOKEN_HERE",
   },
 });
 
@@ -393,7 +393,7 @@ import { ListVehiclesResponse } from "smartcar/dist/sdk/models/operations";
 
 const sdk = new Smartcar({
   security: {
-    bearerAuth: "Bearer YOUR_BEARER_TOKEN_HERE",
+    bearerAuth: "YOUR_BEARER_TOKEN_HERE",
   },
 });
 
@@ -429,7 +429,7 @@ import { SecurityActionActionEnum, SuccessResponseStatusEnum } from "smartcar/di
 
 const sdk = new Smartcar({
   security: {
-    bearerAuth: "Bearer YOUR_BEARER_TOKEN_HERE",
+    bearerAuth: "YOUR_BEARER_TOKEN_HERE",
   },
 });
 
