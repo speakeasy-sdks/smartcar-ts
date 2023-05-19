@@ -3,35 +3,32 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
+import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
-export class DisconnectRequest extends SpeakeasyBase {
+export class SetTeslaAmmeterRequest extends SpeakeasyBase {
   @SpeakeasyMetadata({
     data: "pathParam, style=simple;explode=false;name=vehicle_id",
   })
   vehicleId: string;
+
+  @SpeakeasyMetadata({ data: "request, media_type=application/json" })
+  chargeAmmeter?: shared.ChargeAmmeter;
 }
 
-/**
- * Revoke application access
- */
-export enum DisconnectStatus {
-  Success = "success",
-}
-
-export class DisconnectResponse extends SpeakeasyBase {
+export class SetTeslaAmmeterResponse extends SpeakeasyBase {
   @SpeakeasyMetadata()
   contentType: string;
-
-  /**
-   * Revoke application access
-   */
-  @SpeakeasyMetadata()
-  status?: DisconnectStatus;
 
   @SpeakeasyMetadata()
   statusCode: number;
 
   @SpeakeasyMetadata()
   rawResponse?: AxiosResponse;
+
+  /**
+   * returns the amperage of the charger measured by the vehicle.
+   */
+  @SpeakeasyMetadata()
+  successResponse?: shared.SuccessResponse;
 }

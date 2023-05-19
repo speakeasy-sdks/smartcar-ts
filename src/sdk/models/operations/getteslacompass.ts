@@ -3,31 +3,25 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
+import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
-export class DisconnectRequest extends SpeakeasyBase {
+export class GetTeslaCompassRequest extends SpeakeasyBase {
   @SpeakeasyMetadata({
     data: "pathParam, style=simple;explode=false;name=vehicle_id",
   })
   vehicleId: string;
 }
 
-/**
- * Revoke application access
- */
-export enum DisconnectStatus {
-  Success = "success",
-}
-
-export class DisconnectResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
-
+export class GetTeslaCompassResponse extends SpeakeasyBase {
   /**
-   * Revoke application access
+   * returns the compass heading of a Tesla.
    */
   @SpeakeasyMetadata()
-  status?: DisconnectStatus;
+  compass?: shared.Compass;
+
+  @SpeakeasyMetadata()
+  contentType: string;
 
   @SpeakeasyMetadata()
   statusCode: number;

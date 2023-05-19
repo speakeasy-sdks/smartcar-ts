@@ -5,13 +5,11 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose } from "class-transformer";
 
-export enum SecurityActionAction {
-  Lock = "LOCK",
-  Unlock = "UNLOCK",
-}
-
-export class SecurityAction extends SpeakeasyBase {
+/**
+ * returns the speed of a Tesla.
+ */
+export class Speed extends SpeakeasyBase {
   @SpeakeasyMetadata()
-  @Expose({ name: "action" })
-  action?: SecurityActionAction;
+  @Expose({ name: "speed" })
+  speed?: number;
 }

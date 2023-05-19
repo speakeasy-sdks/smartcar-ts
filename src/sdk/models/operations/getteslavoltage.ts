@@ -3,31 +3,25 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
+import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
-export class DisconnectRequest extends SpeakeasyBase {
+export class GetTeslaVoltageRequest extends SpeakeasyBase {
   @SpeakeasyMetadata({
     data: "pathParam, style=simple;explode=false;name=vehicle_id",
   })
   vehicleId: string;
 }
 
-/**
- * Revoke application access
- */
-export enum DisconnectStatus {
-  Success = "success",
-}
-
-export class DisconnectResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
-
+export class GetTeslaVoltageResponse extends SpeakeasyBase {
   /**
-   * Revoke application access
+   * returns the voltage of the charger measured by the vehicle.
    */
   @SpeakeasyMetadata()
-  status?: DisconnectStatus;
+  chargeVoltage?: shared.ChargeVoltage;
+
+  @SpeakeasyMetadata()
+  contentType: string;
 
   @SpeakeasyMetadata()
   statusCode: number;

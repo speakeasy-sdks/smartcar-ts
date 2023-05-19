@@ -2,8 +2,10 @@ src/sdk/cadillac.ts
 src/sdk/chevrolet.ts
 src/sdk/compatibility.ts
 src/sdk/evs.ts
+src/sdk/tesla.ts
 src/sdk/user.ts
 src/sdk/vehicles.ts
+src/sdk/webhooks.ts
 src/sdk/sdk.ts
 .eslintrc.yml
 jest.config.js
@@ -34,6 +36,15 @@ src/sdk/models/operations/getcharginglimit.ts
 src/sdk/models/operations/getchargingstatus.ts
 src/sdk/models/operations/setcharginglimit.ts
 src/sdk/models/operations/startstopcharge.ts
+src/sdk/models/operations/getteslaammeter.ts
+src/sdk/models/operations/getteslachargetime.ts
+src/sdk/models/operations/getteslacompass.ts
+src/sdk/models/operations/getteslaexteriortemperature.ts
+src/sdk/models/operations/getteslainteriortemperature.ts
+src/sdk/models/operations/getteslaspeed.ts
+src/sdk/models/operations/getteslavoltage.ts
+src/sdk/models/operations/getteslawattmeter.ts
+src/sdk/models/operations/setteslaammeter.ts
 src/sdk/models/operations/getinfo.ts
 src/sdk/models/operations/batch.ts
 src/sdk/models/operations/disconnect.ts
@@ -47,6 +58,8 @@ src/sdk/models/operations/gettirepressure.ts
 src/sdk/models/operations/getvin.ts
 src/sdk/models/operations/listvehicles.ts
 src/sdk/models/operations/lockunlock.ts
+src/sdk/models/operations/subscribe.ts
+src/sdk/models/operations/unsubscribe.ts
 src/sdk/models/operations/index.ts
 src/sdk/models/shared/chargetime.ts
 src/sdk/models/shared/chargevoltage.ts
@@ -58,6 +71,11 @@ src/sdk/models/shared/chargelimit.ts
 src/sdk/models/shared/chargestatus.ts
 src/sdk/models/shared/successresponse.ts
 src/sdk/models/shared/chargeaction.ts
+src/sdk/models/shared/chargeammeter.ts
+src/sdk/models/shared/compass.ts
+src/sdk/models/shared/temperature.ts
+src/sdk/models/shared/speed.ts
+src/sdk/models/shared/chargewattage.ts
 src/sdk/models/shared/userinfo.ts
 src/sdk/models/shared/batchresponse.ts
 src/sdk/models/shared/response.ts
@@ -72,6 +90,7 @@ src/sdk/models/shared/vehicleinfo.ts
 src/sdk/models/shared/permission.ts
 src/sdk/models/shared/vehiclesresponse.ts
 src/sdk/models/shared/securityaction.ts
+src/sdk/models/shared/webhookinfo.ts
 src/sdk/models/shared/security.ts
 src/sdk/models/shared/index.ts
 docs/smartcar/README.md
@@ -79,6 +98,8 @@ docs/cadillac/README.md
 docs/chevrolet/README.md
 docs/compatibility/README.md
 docs/evs/README.md
+docs/tesla/README.md
 docs/user/README.md
 docs/vehicles/README.md
+docs/webhooks/README.md
 USAGE.md

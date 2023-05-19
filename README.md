@@ -71,6 +71,18 @@ sdk.vehicles.getLocation("36ab27d0-fd9d-4455-823a-ce30af709ffc").then((res: GetL
 * [setChargingLimit](docs/evs/README.md#setcharginglimit) - Set EV Charging Limit
 * [startStopCharge](docs/evs/README.md#startstopcharge) - Start or stop charging an electric vehicle. Please contact us to request early access.
 
+### [tesla](docs/tesla/README.md)
+
+* [getAmmeter](docs/tesla/README.md#getammeter) - Retrieve charging ammeter time for a Tesla.
+* [getChargeTime](docs/tesla/README.md#getchargetime) - Retrieve charging completion time for a Tesla.
+* [getCompass](docs/tesla/README.md#getcompass) - Retrieve compass heading for a Tesla.
+* [getExteriorTemperature](docs/tesla/README.md#getexteriortemperature) - Retrieve exterior temperature for a Tesla.
+* [getInteriorTemperature](docs/tesla/README.md#getinteriortemperature) - Retrieve interior temperature for a Tesla.
+* [getSpeedometer](docs/tesla/README.md#getspeedometer) - Retrieve speed for a Tesla.
+* [getVoltage](docs/tesla/README.md#getvoltage) - Retrieve charging voltmeter time for a Tesla.
+* [getWattmeter](docs/tesla/README.md#getwattmeter) - Retrieve charging wattmeter time for a Tesla.
+* [setAmmeter](docs/tesla/README.md#setammeter) - Set charging ammeter time for a Tesla.
+
 ### [user](docs/user/README.md)
 
 * [getInfo](docs/user/README.md#getinfo) - User Info
@@ -89,6 +101,11 @@ sdk.vehicles.getLocation("36ab27d0-fd9d-4455-823a-ce30af709ffc").then((res: GetL
 * [getVin](docs/vehicles/README.md#getvin) - Returns the vehicle’s manufacturer identifier.
 * [listVehicles](docs/vehicles/README.md#listvehicles) - All Vehicles
 * [lockUnlock](docs/vehicles/README.md#lockunlock) - Lock/Unlock Vehicle
+
+### [webhooks](docs/webhooks/README.md)
+
+* [subscribe](docs/webhooks/README.md#subscribe) - Subscribe Webhook
+* [unsubscribe](docs/webhooks/README.md#unsubscribe) - Unsubscribe Webhook
 <!-- End SDK Available Operations -->
 
 ### Maturity

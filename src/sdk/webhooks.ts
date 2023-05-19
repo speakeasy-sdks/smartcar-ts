@@ -7,7 +7,7 @@ import * as operations from "./models/operations";
 import * as shared from "./models/shared";
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 
-export class Chevrolet {
+export class Webhooks {
   _defaultClient: AxiosInstance;
   _securityClient: AxiosInstance;
   _serverURL: string;
@@ -32,30 +32,58 @@ export class Chevrolet {
   }
 
   /**
-   * Retrieve charging completion time for a Chevrolet.
+   * Subscribe Webhook
    *
    * @remarks
    * __Description__
    *
-   * When the vehicle is charging, this endpoint returns the date and time the vehicle expects to complete this charging session. When the vehicle is not charging, this endpoint results in a vehicle state error.
+   * Subscribe to a webhook for a vehicle.
+   *
+   * __Permission__
+   *
+   * `required: webhook:read`
+   *
+   * __Response body__
+   *
+   * |  Name 	|Type   	|Boolean   	|
+   * |---	|---	|---	|
+   * |  status|   string|  If the request is successful, Smartcar will return “success” (HTTP 200 status).|
    */
-  async getChargeTime(
+  async subscribe(
     vehicleId: string,
+    webhookId: string,
+    webhookInfo?: shared.WebhookInfo,
     config?: AxiosRequestConfig
-  ): Promise<operations.GetChevroletChargeTimeResponse> {
-    const req = new operations.GetChevroletChargeTimeRequest({
+  ): Promise<operations.SubscribeResponse> {
+    const req = new operations.SubscribeRequest({
       vehicleId: vehicleId,
+      webhookId: webhookId,
+      webhookInfo: webhookInfo,
     });
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(
       baseURL,
-      "/vehicles/{vehicle_id}/chevrolet/charge/completion",
+      "/vehicles/{vehicle_id}/webhooks/{webhookId}",
       req
     );
 
+    let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+
+    try {
+      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
+        req,
+        "webhookInfo",
+        "json"
+      );
+    } catch (e: unknown) {
+      if (e instanceof Error) {
+        throw new Error(`Error serializing request body, cause: ${e.message}`);
+      }
+    }
+
     const client: AxiosInstance = this._securityClient || this._defaultClient;
 
-    const headers = { ...config?.headers };
+    const headers = { ...reqBodyHeaders, ...config?.headers };
     headers["Accept"] = "application/json";
     headers[
       "user-agent"
@@ -64,8 +92,9 @@ export class Chevrolet {
     const httpRes: AxiosResponse = await client.request({
       validateStatus: () => true,
       url: url,
-      method: "get",
+      method: "post",
       headers: headers,
+      data: reqBody,
       ...config,
     });
 
@@ -75,18 +104,17 @@ export class Chevrolet {
       throw new Error(`status code not found in response: ${httpRes}`);
     }
 
-    const res: operations.GetChevroletChargeTimeResponse =
-      new operations.GetChevroletChargeTimeResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
+    const res: operations.SubscribeResponse = new operations.SubscribeResponse({
+      statusCode: httpRes.status,
+      contentType: contentType,
+      rawResponse: httpRes,
+    });
     switch (true) {
       case httpRes?.status == 200:
         if (utils.matchContentType(contentType, `application/json`)) {
-          res.chargeTime = utils.objectToClass(
+          res.successResponse = utils.objectToClass(
             httpRes?.data,
-            shared.ChargeTime
+            shared.SuccessResponse
           );
         }
         break;
@@ -96,24 +124,36 @@ export class Chevrolet {
   }
 
   /**
-   * Retrieve charging voltmeter time for a Chevrolet.
+   * Unsubscribe Webhook
    *
    * @remarks
    * __Description__
    *
-   * When the vehicle is plugged in, this endpoint returns the voltage of the charger measured by the vehicle. When the vehicle is not plugged in, this endpoint results in a vehicle state error.
+   * Delete a webhook for a vehicle.
+   *
+   * __Permission__
+   *
+   * `required: webhook:read`
+   *
+   * __Response body__
+   *
+   * |  Name 	|Type   	|Boolean   	|
+   * |---	|---	|---	|
+   * |  status|   string|  If the request is successful, Smartcar will return “success” (HTTP 200 status).|
    */
-  async getVoltage(
+  async unsubscribe(
     vehicleId: string,
+    webhookId: string,
     config?: AxiosRequestConfig
-  ): Promise<operations.GetChevroletVoltageResponse> {
-    const req = new operations.GetChevroletVoltageRequest({
+  ): Promise<operations.UnsubscribeResponse> {
+    const req = new operations.UnsubscribeRequest({
       vehicleId: vehicleId,
+      webhookId: webhookId,
     });
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(
       baseURL,
-      "/vehicles/{vehicle_id}/chevrolet/charge/voltmeter",
+      "/vehicles/{vehicle_id}/webhooks/{webhookId}",
       req
     );
 
@@ -128,7 +168,7 @@ export class Chevrolet {
     const httpRes: AxiosResponse = await client.request({
       validateStatus: () => true,
       url: url,
-      method: "get",
+      method: "delete",
       headers: headers,
       ...config,
     });
@@ -139,8 +179,8 @@ export class Chevrolet {
       throw new Error(`status code not found in response: ${httpRes}`);
     }
 
-    const res: operations.GetChevroletVoltageResponse =
-      new operations.GetChevroletVoltageResponse({
+    const res: operations.UnsubscribeResponse =
+      new operations.UnsubscribeResponse({
         statusCode: httpRes.status,
         contentType: contentType,
         rawResponse: httpRes,
@@ -148,9 +188,9 @@ export class Chevrolet {
     switch (true) {
       case httpRes?.status == 200:
         if (utils.matchContentType(contentType, `application/json`)) {
-          res.chargeVoltage = utils.objectToClass(
+          res.successResponse = utils.objectToClass(
             httpRes?.data,
-            shared.ChargeVoltage
+            shared.SuccessResponse
           );
         }
         break;

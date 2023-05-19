@@ -131,7 +131,7 @@ __Response body__
 ```typescript
 import { Smartcar } from "smartcar";
 import { GetChargingStatusResponse } from "smartcar/dist/sdk/models/operations";
-import { ChargeStatusStateEnum } from "smartcar/dist/sdk/models/shared";
+import { ChargeStatusState } from "smartcar/dist/sdk/models/shared";
 
 const sdk = new Smartcar({
   security: {
@@ -157,7 +157,7 @@ Returns the current charge limit of an electric vehicle.
 ```typescript
 import { Smartcar } from "smartcar";
 import { SetChargingLimitResponse } from "smartcar/dist/sdk/models/operations";
-import { SuccessResponseStatusEnum } from "smartcar/dist/sdk/models/shared";
+import { SuccessResponseStatus } from "smartcar/dist/sdk/models/shared";
 
 const sdk = new Smartcar({
   security: {
@@ -196,7 +196,7 @@ __Response body__
 ```typescript
 import { Smartcar } from "smartcar";
 import { StartStopChargeResponse } from "smartcar/dist/sdk/models/operations";
-import { ChargeActionActionEnum, SuccessResponseStatusEnum } from "smartcar/dist/sdk/models/shared";
+import { ChargeActionAction, SuccessResponseStatus } from "smartcar/dist/sdk/models/shared";
 
 const sdk = new Smartcar({
   security: {
@@ -205,7 +205,7 @@ const sdk = new Smartcar({
 });
 
 sdk.evs.startStopCharge("error", {
-  action: ChargeActionActionEnum.Start,
+  action: ChargeActionAction.Start,
 }).then((res: StartStopChargeResponse) => {
   if (res.statusCode == 200) {
     // handle response

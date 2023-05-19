@@ -3,35 +3,34 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
+import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
-export class DisconnectRequest extends SpeakeasyBase {
+export class UnsubscribeRequest extends SpeakeasyBase {
   @SpeakeasyMetadata({
     data: "pathParam, style=simple;explode=false;name=vehicle_id",
   })
   vehicleId: string;
+
+  @SpeakeasyMetadata({
+    data: "pathParam, style=simple;explode=false;name=webhookId",
+  })
+  webhookId: string;
 }
 
-/**
- * Revoke application access
- */
-export enum DisconnectStatus {
-  Success = "success",
-}
-
-export class DisconnectResponse extends SpeakeasyBase {
+export class UnsubscribeResponse extends SpeakeasyBase {
   @SpeakeasyMetadata()
   contentType: string;
-
-  /**
-   * Revoke application access
-   */
-  @SpeakeasyMetadata()
-  status?: DisconnectStatus;
 
   @SpeakeasyMetadata()
   statusCode: number;
 
   @SpeakeasyMetadata()
   rawResponse?: AxiosResponse;
+
+  /**
+   * Ubsubscribe from a webhook
+   */
+  @SpeakeasyMetadata()
+  successResponse?: shared.SuccessResponse;
 }

@@ -28,7 +28,7 @@ __Description__ Returns a list of responses from multiple Smartcar endpoints, al
 ```typescript
 import { Smartcar } from "smartcar";
 import { BatchResponse } from "smartcar/dist/sdk/models/operations";
-import { ResponseCodeEnum } from "smartcar/dist/sdk/models/shared";
+import { ResponseCode } from "smartcar/dist/sdk/models/shared";
 
 const sdk = new Smartcar({
   security: {
@@ -36,7 +36,9 @@ const sdk = new Smartcar({
   },
 });
 
-sdk.vehicles.batch("deserunt", [
+sdk.vehicles.batch("molestiae", [
+  "/odometer",
+  "/odometer",
   "/odometer",
   "/odometer",
 ]).then((res: BatchResponse) => {
@@ -62,7 +64,7 @@ __Response body__
 
 ```typescript
 import { Smartcar } from "smartcar";
-import { DisconnectResponse, DisconnectStatusEnum } from "smartcar/dist/sdk/models/operations";
+import { DisconnectResponse, DisconnectStatus } from "smartcar/dist/sdk/models/operations";
 
 const sdk = new Smartcar({
   security: {
@@ -70,7 +72,7 @@ const sdk = new Smartcar({
   },
 });
 
-sdk.vehicles.disconnect("iure").then((res: DisconnectResponse) => {
+sdk.vehicles.disconnect("placeat").then((res: DisconnectResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -108,7 +110,7 @@ const sdk = new Smartcar({
   },
 });
 
-sdk.vehicles.get("magnam").then((res: GetVehicleResponse) => {
+sdk.vehicles.get("voluptatum").then((res: GetVehicleResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -143,7 +145,7 @@ const sdk = new Smartcar({
   },
 });
 
-sdk.vehicles.getEngineOil("debitis").then((res: GetEngineOilResponse) => {
+sdk.vehicles.getEngineOil("iusto").then((res: GetEngineOilResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -180,7 +182,7 @@ const sdk = new Smartcar({
   },
 });
 
-sdk.vehicles.getFuelTank("ipsa").then((res: GetFuelTankResponse) => {
+sdk.vehicles.getFuelTank("excepturi").then((res: GetFuelTankResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -251,7 +253,7 @@ const sdk = new Smartcar({
   },
 });
 
-sdk.vehicles.getOdometer("delectus").then((res: GetOdometerResponse) => {
+sdk.vehicles.getOdometer("nisi").then((res: GetOdometerResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -293,7 +295,7 @@ const sdk = new Smartcar({
   },
 });
 
-sdk.vehicles.getPermissions("tempora", 383441, 477665).then((res: GetPermissionsResponse) => {
+sdk.vehicles.getPermissions("recusandae", 836079, 71036).then((res: GetPermissionsResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -330,7 +332,7 @@ const sdk = new Smartcar({
   },
 });
 
-sdk.vehicles.getTirePressure("minus").then((res: GetTirePressureResponse) => {
+sdk.vehicles.getTirePressure("quis").then((res: GetTirePressureResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -355,7 +357,7 @@ const sdk = new Smartcar({
   },
 });
 
-sdk.vehicles.getVin("placeat").then((res: GetVinResponse) => {
+sdk.vehicles.getVin("veritatis").then((res: GetVinResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -397,7 +399,7 @@ const sdk = new Smartcar({
   },
 });
 
-sdk.vehicles.listVehicles(528895, 479977).then((res: ListVehiclesResponse) => {
+sdk.vehicles.listVehicles(648172, 20218).then((res: ListVehiclesResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -425,7 +427,7 @@ __Response body__
 ```typescript
 import { Smartcar } from "smartcar";
 import { LockUnlockResponse } from "smartcar/dist/sdk/models/operations";
-import { SecurityActionActionEnum, SuccessResponseStatusEnum } from "smartcar/dist/sdk/models/shared";
+import { SecurityActionAction, SuccessResponseStatus } from "smartcar/dist/sdk/models/shared";
 
 const sdk = new Smartcar({
   security: {
@@ -433,8 +435,8 @@ const sdk = new Smartcar({
   },
 });
 
-sdk.vehicles.lockUnlock("excepturi", {
-  action: SecurityActionActionEnum.Unlock,
+sdk.vehicles.lockUnlock("ipsam", {
+  action: SecurityActionAction.Unlock,
 }).then((res: LockUnlockResponse) => {
   if (res.statusCode == 200) {
     // handle response

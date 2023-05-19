@@ -3,31 +3,25 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
+import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
-export class DisconnectRequest extends SpeakeasyBase {
+export class GetTeslaSpeedRequest extends SpeakeasyBase {
   @SpeakeasyMetadata({
     data: "pathParam, style=simple;explode=false;name=vehicle_id",
   })
   vehicleId: string;
 }
 
-/**
- * Revoke application access
- */
-export enum DisconnectStatus {
-  Success = "success",
-}
-
-export class DisconnectResponse extends SpeakeasyBase {
+export class GetTeslaSpeedResponse extends SpeakeasyBase {
   @SpeakeasyMetadata()
   contentType: string;
 
   /**
-   * Revoke application access
+   * returns the speed of a Tesla.
    */
   @SpeakeasyMetadata()
-  status?: DisconnectStatus;
+  speed?: shared.Speed;
 
   @SpeakeasyMetadata()
   statusCode: number;

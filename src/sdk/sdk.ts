@@ -8,8 +8,10 @@ import { Chevrolet } from "./chevrolet";
 import { Compatibility } from "./compatibility";
 import { Evs } from "./evs";
 import * as shared from "./models/shared";
+import { Tesla } from "./tesla";
 import { User } from "./user";
 import { Vehicles } from "./vehicles";
+import { Webhooks } from "./webhooks";
 import axios from "axios";
 import { AxiosInstance } from "axios";
 
@@ -58,18 +60,20 @@ export class Smartcar {
    * Operations about electric vehicles
    */
   public evs: Evs;
+  public tesla: Tesla;
   public user: User;
   /**
    * Operations about vehicles
    */
   public vehicles: Vehicles;
+  public webhooks: Webhooks;
 
   public _defaultClient: AxiosInstance;
   public _securityClient: AxiosInstance;
   public _serverURL: string;
   private _language = "typescript";
-  private _sdkVersion = "2.12.0";
-  private _genVersion = "2.30.0";
+  private _sdkVersion = "2.13.0";
+  private _genVersion = "2.31.0";
   private _globals: any;
 
   constructor(props?: SDKProps) {
@@ -125,6 +129,15 @@ export class Smartcar {
       this._genVersion
     );
 
+    this.tesla = new Tesla(
+      this._defaultClient,
+      this._securityClient,
+      this._serverURL,
+      this._language,
+      this._sdkVersion,
+      this._genVersion
+    );
+
     this.user = new User(
       this._defaultClient,
       this._securityClient,
@@ -135,6 +148,15 @@ export class Smartcar {
     );
 
     this.vehicles = new Vehicles(
+      this._defaultClient,
+      this._securityClient,
+      this._serverURL,
+      this._language,
+      this._sdkVersion,
+      this._genVersion
+    );
+
+    this.webhooks = new Webhooks(
       this._defaultClient,
       this._securityClient,
       this._serverURL,
