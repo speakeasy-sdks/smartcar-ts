@@ -6,17 +6,17 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose } from "class-transformer";
 
 export class BatteryLevel extends SpeakeasyBase {
-  /**
-   * An EV battery’s state of charge (in percent).
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "percentRemaining" })
-  percentRemaining?: number;
+    /**
+     * An EV battery’s state of charge (in percent).
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "percentRemaining" })
+    percentRemaining?: number;
 
-  /**
-   * The estimated remaining distance the vehicle can travel (in kilometers by default or in miles using the sc-unit-system).
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "range" })
-  range?: number;
+    /**
+     * The estimated remaining distance the vehicle can travel (in kilometers by default or in miles using the sc-unit-system).
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "range" })
+    range?: number;
 }

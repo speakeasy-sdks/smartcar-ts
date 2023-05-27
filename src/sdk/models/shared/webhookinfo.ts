@@ -9,11 +9,11 @@ import { Expose } from "class-transformer";
  * A webhook ID (UUID v4).
  */
 export class WebhookInfo extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "vehicleid" })
-  vehicleid?: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "vehicleid" })
+    vehicleid?: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "webhookid" })
-  webhookid?: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "webhookid" })
+    webhookid?: string;
 }

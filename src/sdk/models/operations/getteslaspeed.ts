@@ -7,25 +7,23 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class GetTeslaSpeedRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=vehicle_id",
-  })
-  vehicleId: string;
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=vehicle_id" })
+    vehicleId: string;
 }
 
 export class GetTeslaSpeedResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  /**
-   * returns the speed of a Tesla.
-   */
-  @SpeakeasyMetadata()
-  speed?: shared.Speed;
+    /**
+     * returns the speed of a Tesla.
+     */
+    @SpeakeasyMetadata()
+    speed?: shared.Speed;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 }

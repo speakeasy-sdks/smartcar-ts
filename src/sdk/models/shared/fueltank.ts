@@ -9,24 +9,24 @@ import { Expose } from "class-transformer";
  * return fuel tank reading
  */
 export class FuelTank extends SpeakeasyBase {
-  /**
-   * The amount of fuel in the tank (in liters by default or in gallons (U.S.) using the sc-unit-system).
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "amountRemaining" })
-  amountRemaining?: number;
+    /**
+     * The amount of fuel in the tank (in liters by default or in gallons (U.S.) using the sc-unit-system).
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "amountRemaining" })
+    amountRemaining?: number;
 
-  /**
-   * The remaining level of fuel in the tank (in percent).
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "percentRemaining" })
-  percentRemaining?: number;
+    /**
+     * The remaining level of fuel in the tank (in percent).
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "percentRemaining" })
+    percentRemaining?: number;
 
-  /**
-   * The estimated remaining distance the car can travel (in kilometers by default or in miles using the sc-unit-system).
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "range" })
-  range?: number;
+    /**
+     * The estimated remaining distance the car can travel (in kilometers by default or in miles using the sc-unit-system).
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "range" })
+    range?: number;
 }

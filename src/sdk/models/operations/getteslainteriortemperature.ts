@@ -7,23 +7,23 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class GetTeslaInteriorTemperatureRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=id" })
-  id: string;
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=id" })
+    id: string;
 }
 
 export class GetTeslaInteriorTemperatureResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 
-  /**
-   * returns the interior temperature of a Tesla.
-   */
-  @SpeakeasyMetadata()
-  temperature?: shared.Temperature;
+    /**
+     * returns the interior temperature of a Tesla.
+     */
+    @SpeakeasyMetadata()
+    temperature?: shared.Temperature;
 }

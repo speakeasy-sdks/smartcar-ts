@@ -9,7 +9,7 @@ import { Expose } from "class-transformer";
  * return odometer reading
  */
 export class Odometer extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "distance" })
-  distance?: number;
+    @SpeakeasyMetadata()
+    @Expose({ name: "distance" })
+    distance?: number;
 }

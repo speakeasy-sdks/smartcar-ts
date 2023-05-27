@@ -9,7 +9,7 @@ import { Expose } from "class-transformer";
  * returns the speed of a Tesla.
  */
 export class Speed extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "speed" })
-  speed?: number;
+    @SpeakeasyMetadata()
+    @Expose({ name: "speed" })
+    speed?: number;
 }

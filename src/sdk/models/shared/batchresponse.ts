@@ -10,8 +10,8 @@ import { Expose, Type } from "class-transformer";
  * A list of responses from multiple Smartcar endpoints
  */
 export class BatchResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata({ elemType: Response })
-  @Expose({ name: "responses" })
-  @Type(() => Response)
-  responses?: Response[];
+    @SpeakeasyMetadata({ elemType: Response })
+    @Expose({ name: "responses" })
+    @Type(() => Response)
+    responses?: Response[];
 }

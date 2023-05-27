@@ -6,11 +6,11 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose } from "class-transformer";
 
 export class Header extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "sc-data-age" })
-  scDataAge?: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "sc-data-age" })
+    scDataAge?: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "sc-unit-system" })
-  scUnitSystem?: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "sc-unit-system" })
+    scUnitSystem?: string;
 }

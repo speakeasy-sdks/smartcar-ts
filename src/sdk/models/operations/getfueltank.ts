@@ -7,25 +7,23 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class GetFuelTankRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=vehicle_id",
-  })
-  vehicleId: string;
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=vehicle_id" })
+    vehicleId: string;
 }
 
 export class GetFuelTankResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  /**
-   * return fuel tank reading
-   */
-  @SpeakeasyMetadata()
-  fuelTank?: shared.FuelTank;
+    /**
+     * return fuel tank reading
+     */
+    @SpeakeasyMetadata()
+    fuelTank?: shared.FuelTank;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 }

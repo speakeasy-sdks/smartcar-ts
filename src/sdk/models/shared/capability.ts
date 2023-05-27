@@ -6,19 +6,19 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose } from "class-transformer";
 
 export class Capability extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "capable" })
-  capable?: boolean;
+    @SpeakeasyMetadata()
+    @Expose({ name: "capable" })
+    capable?: boolean;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "endpoint" })
-  endpoint?: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "endpoint" })
+    endpoint?: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "permission" })
-  permission?: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "permission" })
+    permission?: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "reason" })
-  reason?: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "reason" })
+    reason?: string;
 }

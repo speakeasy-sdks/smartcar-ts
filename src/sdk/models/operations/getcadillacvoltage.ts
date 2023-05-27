@@ -7,25 +7,23 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class GetCadillacVoltageRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=vehicle_id",
-  })
-  vehicleId: string;
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=vehicle_id" })
+    vehicleId: string;
 }
 
 export class GetCadillacVoltageResponse extends SpeakeasyBase {
-  /**
-   * returns the voltage of the charger measured by the vehicle.
-   */
-  @SpeakeasyMetadata()
-  chargeVoltage?: shared.ChargeVoltage;
+    /**
+     * returns the voltage of the charger measured by the vehicle.
+     */
+    @SpeakeasyMetadata()
+    chargeVoltage?: shared.ChargeVoltage;
 
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 }

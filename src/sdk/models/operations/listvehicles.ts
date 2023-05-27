@@ -7,34 +7,32 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class ListVehiclesRequest extends SpeakeasyBase {
-  /**
-   * Number of vehicles to return
-   */
-  @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=limit" })
-  limit?: number;
+    /**
+     * Number of vehicles to return
+     */
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=limit" })
+    limit?: number;
 
-  /**
-   * Index to start vehicle list at
-   */
-  @SpeakeasyMetadata({
-    data: "queryParam, style=form;explode=true;name=offset",
-  })
-  offset?: number;
+    /**
+     * Index to start vehicle list at
+     */
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=offset" })
+    offset?: number;
 }
 
 export class ListVehiclesResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 
-  /**
-   * A list of vehicles
-   */
-  @SpeakeasyMetadata()
-  vehiclesResponse?: shared.VehiclesResponse;
+    /**
+     * A list of vehicles
+     */
+    @SpeakeasyMetadata()
+    vehiclesResponse?: shared.VehiclesResponse;
 }

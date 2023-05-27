@@ -7,25 +7,23 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class GetEngineOilRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=vehicle_id",
-  })
-  vehicleId: string;
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=vehicle_id" })
+    vehicleId: string;
 }
 
 export class GetEngineOilResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  /**
-   * return engine oil reading
-   */
-  @SpeakeasyMetadata()
-  engineOil?: shared.EngineOil;
+    /**
+     * return engine oil reading
+     */
+    @SpeakeasyMetadata()
+    engineOil?: shared.EngineOil;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 }

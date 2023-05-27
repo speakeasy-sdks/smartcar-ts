@@ -7,25 +7,23 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class GetChevroletChargeTimeRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=vehicle_id",
-  })
-  vehicleId: string;
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=vehicle_id" })
+    vehicleId: string;
 }
 
 export class GetChevroletChargeTimeResponse extends SpeakeasyBase {
-  /**
-   * returns the date and time the vehicle expects to "complete" this charging session.
-   */
-  @SpeakeasyMetadata()
-  chargeTime?: shared.ChargeTime;
+    /**
+     * returns the date and time the vehicle expects to "complete" this charging session.
+     */
+    @SpeakeasyMetadata()
+    chargeTime?: shared.ChargeTime;
 
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 }

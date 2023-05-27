@@ -9,11 +9,11 @@ import { Expose } from "class-transformer";
  * A list of vehicles
  */
 export class Location extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "latitude" })
-  latitude: number;
+    @SpeakeasyMetadata()
+    @Expose({ name: "latitude" })
+    latitude: number;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "longitude" })
-  longitude: number;
+    @SpeakeasyMetadata()
+    @Expose({ name: "longitude" })
+    longitude: number;
 }

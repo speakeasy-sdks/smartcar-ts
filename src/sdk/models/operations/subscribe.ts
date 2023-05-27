@@ -7,33 +7,29 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class SubscribeRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=vehicle_id",
-  })
-  vehicleId: string;
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=vehicle_id" })
+    vehicleId: string;
 
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=webhookId",
-  })
-  webhookId: string;
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=webhookId" })
+    webhookId: string;
 
-  @SpeakeasyMetadata({ data: "request, media_type=application/json" })
-  webhookInfo?: shared.WebhookInfo;
+    @SpeakeasyMetadata({ data: "request, media_type=application/json" })
+    webhookInfo?: shared.WebhookInfo;
 }
 
 export class SubscribeResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 
-  /**
-   * return Compatibility
-   */
-  @SpeakeasyMetadata()
-  successResponse?: shared.SuccessResponse;
+    /**
+     * return Compatibility
+     */
+    @SpeakeasyMetadata()
+    successResponse?: shared.SuccessResponse;
 }

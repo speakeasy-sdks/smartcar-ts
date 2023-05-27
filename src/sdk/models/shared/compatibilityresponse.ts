@@ -10,16 +10,16 @@ import { Expose, Type } from "class-transformer";
  * return Compatibility
  */
 export class CompatibilityResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata({ elemType: Capability })
-  @Expose({ name: "capabilities" })
-  @Type(() => Capability)
-  capabilities?: Capability[];
+    @SpeakeasyMetadata({ elemType: Capability })
+    @Expose({ name: "capabilities" })
+    @Type(() => Capability)
+    capabilities?: Capability[];
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "compatible" })
-  compatible?: boolean;
+    @SpeakeasyMetadata()
+    @Expose({ name: "compatible" })
+    compatible?: boolean;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "reason" })
-  reason?: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "reason" })
+    reason?: string;
 }

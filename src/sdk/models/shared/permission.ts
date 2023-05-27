@@ -6,25 +6,25 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose, Type } from "class-transformer";
 
 export class PermissionPaging extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "count" })
-  count?: number;
+    @SpeakeasyMetadata()
+    @Expose({ name: "count" })
+    count?: number;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "offset" })
-  offset?: number;
+    @SpeakeasyMetadata()
+    @Expose({ name: "offset" })
+    offset?: number;
 }
 
 /**
  * The applications permissions
  */
 export class Permission extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "paging" })
-  @Type(() => PermissionPaging)
-  paging?: PermissionPaging;
+    @SpeakeasyMetadata()
+    @Expose({ name: "paging" })
+    @Type(() => PermissionPaging)
+    paging?: PermissionPaging;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "permissions" })
-  permissions?: string[];
+    @SpeakeasyMetadata()
+    @Expose({ name: "permissions" })
+    permissions?: string[];
 }

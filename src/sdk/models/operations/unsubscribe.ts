@@ -7,30 +7,26 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class UnsubscribeRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=vehicle_id",
-  })
-  vehicleId: string;
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=vehicle_id" })
+    vehicleId: string;
 
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=webhookId",
-  })
-  webhookId: string;
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=webhookId" })
+    webhookId: string;
 }
 
 export class UnsubscribeResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 
-  /**
-   * Ubsubscribe from a webhook
-   */
-  @SpeakeasyMetadata()
-  successResponse?: shared.SuccessResponse;
+    /**
+     * Ubsubscribe from a webhook
+     */
+    @SpeakeasyMetadata()
+    successResponse?: shared.SuccessResponse;
 }

@@ -7,39 +7,35 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class GetPermissionsRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=vehicle_id",
-  })
-  vehicleId: string;
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=vehicle_id" })
+    vehicleId: string;
 
-  /**
-   * Number of vehicles to return
-   */
-  @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=limit" })
-  limit?: number;
+    /**
+     * Number of vehicles to return
+     */
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=limit" })
+    limit?: number;
 
-  /**
-   * Index to start vehicle list at
-   */
-  @SpeakeasyMetadata({
-    data: "queryParam, style=form;explode=true;name=offset",
-  })
-  offset?: number;
+    /**
+     * Index to start vehicle list at
+     */
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=offset" })
+    offset?: number;
 }
 
 export class GetPermissionsResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  /**
-   * The applications permissions
-   */
-  @SpeakeasyMetadata()
-  permission?: shared.Permission;
+    /**
+     * The applications permissions
+     */
+    @SpeakeasyMetadata()
+    permission?: shared.Permission;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 }

@@ -6,20 +6,20 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose } from "class-transformer";
 
 export enum ChargeStatusState {
-  Charging = "CHARGING",
-  FullyCharged = "FULLY_CHARGED",
-  NotCharging = "NOT_CHARGING",
+    Charging = "CHARGING",
+    FullyCharged = "FULLY_CHARGED",
+    NotCharging = "NOT_CHARGING",
 }
 
 export class ChargeStatus extends SpeakeasyBase {
-  /**
-   * Indicates whether a charging cable is currently plugged into the vehicle’s charge port.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "isPluggedIn" })
-  isPluggedIn?: boolean;
+    /**
+     * Indicates whether a charging cable is currently plugged into the vehicle’s charge port.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "isPluggedIn" })
+    isPluggedIn?: boolean;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "state" })
-  state?: ChargeStatusState;
+    @SpeakeasyMetadata()
+    @Expose({ name: "state" })
+    state?: ChargeStatusState;
 }

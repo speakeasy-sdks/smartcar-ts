@@ -7,25 +7,25 @@ import { Header } from "./header";
 import { Expose, Type } from "class-transformer";
 
 export enum ResponseCode {
-  TwoHundred = "200",
-  FiveHundred = "500",
+    TwoHundred = "200",
+    FiveHundred = "500",
 }
 
 export class Response extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "body" })
-  body?: any;
+    @SpeakeasyMetadata()
+    @Expose({ name: "body" })
+    body?: any;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "code" })
-  code?: ResponseCode;
+    @SpeakeasyMetadata()
+    @Expose({ name: "code" })
+    code?: ResponseCode;
 
-  @SpeakeasyMetadata({ elemType: Header })
-  @Expose({ name: "headers" })
-  @Type(() => Header)
-  headers?: Header[];
+    @SpeakeasyMetadata({ elemType: Header })
+    @Expose({ name: "headers" })
+    @Type(() => Header)
+    headers?: Header[];
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "path" })
-  path?: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "path" })
+    path?: string;
 }

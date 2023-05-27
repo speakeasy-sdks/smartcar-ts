@@ -6,19 +6,19 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose } from "class-transformer";
 
 export enum SuccessResponseStatus {
-  Success = "SUCCESS",
-  Failed = "FAILED",
+    Success = "SUCCESS",
+    Failed = "FAILED",
 }
 
 /**
  * return Success Response
  */
 export class SuccessResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "message" })
-  message?: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "message" })
+    message?: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "status" })
-  status?: SuccessResponseStatus;
+    @SpeakeasyMetadata()
+    @Expose({ name: "status" })
+    status?: SuccessResponseStatus;
 }

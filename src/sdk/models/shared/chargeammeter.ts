@@ -9,10 +9,10 @@ import { Expose } from "class-transformer";
  * returns the amperage of the charger measured by the vehicle.
  */
 export class ChargeAmmeter extends SpeakeasyBase {
-  /**
-   * The amperage of the charger measured by the vehicle.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "amperage" })
-  amperage?: number;
+    /**
+     * The amperage of the charger measured by the vehicle.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "amperage" })
+    amperage?: number;
 }

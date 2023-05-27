@@ -9,7 +9,7 @@ import { Expose } from "class-transformer";
  * A user ID (UUID v4).
  */
 export class UserInfo extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "id" })
-  id?: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "id" })
+    id?: string;
 }

@@ -9,19 +9,19 @@ import { Expose } from "class-transformer";
  * A single vehicles
  */
 export class VehicleInfo extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "id" })
-  id: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "id" })
+    id: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "make" })
-  make: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "make" })
+    make: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "model" })
-  model: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "model" })
+    model: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "year" })
-  year: number;
+    @SpeakeasyMetadata()
+    @Expose({ name: "year" })
+    year: number;
 }

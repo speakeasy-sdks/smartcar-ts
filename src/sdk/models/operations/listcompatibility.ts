@@ -7,31 +7,29 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class ListCompatibilityRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata({
-    data: "queryParam, style=form;explode=true;name=country",
-  })
-  country?: string;
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=country" })
+    country?: string;
 
-  @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=scope" })
-  scope?: string;
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=scope" })
+    scope?: string;
 
-  @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=vin" })
-  vin?: string;
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=vin" })
+    vin?: string;
 }
 
 export class ListCompatibilityResponse extends SpeakeasyBase {
-  /**
-   * return Compatibility
-   */
-  @SpeakeasyMetadata()
-  compatibilityResponse?: shared.CompatibilityResponse;
+    /**
+     * return Compatibility
+     */
+    @SpeakeasyMetadata()
+    compatibilityResponse?: shared.CompatibilityResponse;
 
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 }

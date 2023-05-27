@@ -9,7 +9,7 @@ import { Expose } from "class-transformer";
  * A vehicle’s manufacturer identifier.
  */
 export class VinInfo extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "vin" })
-  vin?: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "vin" })
+    vin?: string;
 }

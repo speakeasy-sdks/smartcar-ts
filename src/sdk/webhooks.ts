@@ -8,194 +8,189 @@ import * as shared from "./models/shared";
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 
 export class Webhooks {
-  _defaultClient: AxiosInstance;
-  _securityClient: AxiosInstance;
-  _serverURL: string;
-  _language: string;
-  _sdkVersion: string;
-  _genVersion: string;
+    _defaultClient: AxiosInstance;
+    _securityClient: AxiosInstance;
+    _serverURL: string;
+    _language: string;
+    _sdkVersion: string;
+    _genVersion: string;
 
-  constructor(
-    defaultClient: AxiosInstance,
-    securityClient: AxiosInstance,
-    serverURL: string,
-    language: string,
-    sdkVersion: string,
-    genVersion: string
-  ) {
-    this._defaultClient = defaultClient;
-    this._securityClient = securityClient;
-    this._serverURL = serverURL;
-    this._language = language;
-    this._sdkVersion = sdkVersion;
-    this._genVersion = genVersion;
-  }
-
-  /**
-   * Subscribe Webhook
-   *
-   * @remarks
-   * __Description__
-   *
-   * Subscribe to a webhook for a vehicle.
-   *
-   * __Permission__
-   *
-   * `required: webhook:read`
-   *
-   * __Response body__
-   *
-   * |  Name 	|Type   	|Boolean   	|
-   * |---	|---	|---	|
-   * |  status|   string|  If the request is successful, Smartcar will return “success” (HTTP 200 status).|
-   */
-  async subscribe(
-    vehicleId: string,
-    webhookId: string,
-    webhookInfo?: shared.WebhookInfo,
-    config?: AxiosRequestConfig
-  ): Promise<operations.SubscribeResponse> {
-    const req = new operations.SubscribeRequest({
-      vehicleId: vehicleId,
-      webhookId: webhookId,
-      webhookInfo: webhookInfo,
-    });
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/vehicles/{vehicle_id}/webhooks/{webhookId}",
-      req
-    );
-
-    let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
-
-    try {
-      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
-        req,
-        "webhookInfo",
-        "json"
-      );
-    } catch (e: unknown) {
-      if (e instanceof Error) {
-        throw new Error(`Error serializing request body, cause: ${e.message}`);
-      }
+    constructor(
+        defaultClient: AxiosInstance,
+        securityClient: AxiosInstance,
+        serverURL: string,
+        language: string,
+        sdkVersion: string,
+        genVersion: string
+    ) {
+        this._defaultClient = defaultClient;
+        this._securityClient = securityClient;
+        this._serverURL = serverURL;
+        this._language = language;
+        this._sdkVersion = sdkVersion;
+        this._genVersion = genVersion;
     }
 
-    const client: AxiosInstance = this._securityClient || this._defaultClient;
+    /**
+     * Subscribe Webhook
+     *
+     * @remarks
+     * __Description__
+     *
+     * Subscribe to a webhook for a vehicle.
+     *
+     * __Permission__
+     *
+     * `required: webhook:read`
+     *
+     * __Response body__
+     *
+     * |  Name 	|Type   	|Boolean   	|
+     * |---	|---	|---	|
+     * |  status|   string|  If the request is successful, Smartcar will return “success” (HTTP 200 status).|
+     */
+    async subscribe(
+        vehicleId: string,
+        webhookId: string,
+        webhookInfo?: shared.WebhookInfo,
+        config?: AxiosRequestConfig
+    ): Promise<operations.SubscribeResponse> {
+        const req = new operations.SubscribeRequest({
+            vehicleId: vehicleId,
+            webhookId: webhookId,
+            webhookInfo: webhookInfo,
+        });
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(
+            baseURL,
+            "/vehicles/{vehicle_id}/webhooks/{webhookId}",
+            req
+        );
 
-    const headers = { ...reqBodyHeaders, ...config?.headers };
-    headers["Accept"] = "application/json";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
 
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "post",
-      headers: headers,
-      data: reqBody,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.SubscribeResponse = new operations.SubscribeResponse({
-      statusCode: httpRes.status,
-      contentType: contentType,
-      rawResponse: httpRes,
-    });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.successResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.SuccessResponse
-          );
+        try {
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "webhookInfo", "json");
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                throw new Error(`Error serializing request body, cause: ${e.message}`);
+            }
         }
-        break;
-    }
 
-    return res;
-  }
+        const client: AxiosInstance = this._securityClient || this._defaultClient;
 
-  /**
-   * Unsubscribe Webhook
-   *
-   * @remarks
-   * __Description__
-   *
-   * Delete a webhook for a vehicle.
-   *
-   * __Permission__
-   *
-   * `required: webhook:read`
-   *
-   * __Response body__
-   *
-   * |  Name 	|Type   	|Boolean   	|
-   * |---	|---	|---	|
-   * |  status|   string|  If the request is successful, Smartcar will return “success” (HTTP 200 status).|
-   */
-  async unsubscribe(
-    vehicleId: string,
-    webhookId: string,
-    config?: AxiosRequestConfig
-  ): Promise<operations.UnsubscribeResponse> {
-    const req = new operations.UnsubscribeRequest({
-      vehicleId: vehicleId,
-      webhookId: webhookId,
-    });
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/vehicles/{vehicle_id}/webhooks/{webhookId}",
-      req
-    );
+        const headers = { ...reqBodyHeaders, ...config?.headers };
+        headers["Accept"] = "application/json";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
 
-    const client: AxiosInstance = this._securityClient || this._defaultClient;
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "post",
+            headers: headers,
+            data: reqBody,
+            ...config,
+        });
 
-    const headers = { ...config?.headers };
-    headers["Accept"] = "application/json";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "delete",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.UnsubscribeResponse =
-      new operations.UnsubscribeResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.successResponse = utils.objectToClass(
-            httpRes?.data,
-            shared.SuccessResponse
-          );
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
         }
-        break;
+
+        const res: operations.SubscribeResponse = new operations.SubscribeResponse({
+            statusCode: httpRes.status,
+            contentType: contentType,
+            rawResponse: httpRes,
+        });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.successResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.SuccessResponse
+                    );
+                }
+                break;
+        }
+
+        return res;
     }
 
-    return res;
-  }
+    /**
+     * Unsubscribe Webhook
+     *
+     * @remarks
+     * __Description__
+     *
+     * Delete a webhook for a vehicle.
+     *
+     * __Permission__
+     *
+     * `required: webhook:read`
+     *
+     * __Response body__
+     *
+     * |  Name 	|Type   	|Boolean   	|
+     * |---	|---	|---	|
+     * |  status|   string|  If the request is successful, Smartcar will return “success” (HTTP 200 status).|
+     */
+    async unsubscribe(
+        vehicleId: string,
+        webhookId: string,
+        config?: AxiosRequestConfig
+    ): Promise<operations.UnsubscribeResponse> {
+        const req = new operations.UnsubscribeRequest({
+            vehicleId: vehicleId,
+            webhookId: webhookId,
+        });
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(
+            baseURL,
+            "/vehicles/{vehicle_id}/webhooks/{webhookId}",
+            req
+        );
+
+        const client: AxiosInstance = this._securityClient || this._defaultClient;
+
+        const headers = { ...config?.headers };
+        headers["Accept"] = "application/json";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "delete",
+            headers: headers,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.UnsubscribeResponse = new operations.UnsubscribeResponse({
+            statusCode: httpRes.status,
+            contentType: contentType,
+            rawResponse: httpRes,
+        });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.successResponse = utils.objectToClass(
+                        httpRes?.data,
+                        shared.SuccessResponse
+                    );
+                }
+                break;
+        }
+
+        return res;
+    }
 }

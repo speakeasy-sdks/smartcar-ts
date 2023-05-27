@@ -7,28 +7,26 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class StartStopChargeRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=vehicle_id",
-  })
-  vehicleId: string;
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=vehicle_id" })
+    vehicleId: string;
 
-  @SpeakeasyMetadata({ data: "request, media_type=application/json" })
-  chargeAction?: shared.ChargeAction;
+    @SpeakeasyMetadata({ data: "request, media_type=application/json" })
+    chargeAction?: shared.ChargeAction;
 }
 
 export class StartStopChargeResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 
-  /**
-   * return Success Response
-   */
-  @SpeakeasyMetadata()
-  successResponse?: shared.SuccessResponse;
+    /**
+     * return Success Response
+     */
+    @SpeakeasyMetadata()
+    successResponse?: shared.SuccessResponse;
 }

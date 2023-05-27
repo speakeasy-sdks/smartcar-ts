@@ -7,25 +7,23 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class GetTeslaAmmeterRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=vehicle_id",
-  })
-  vehicleId: string;
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=vehicle_id" })
+    vehicleId: string;
 }
 
 export class GetTeslaAmmeterResponse extends SpeakeasyBase {
-  /**
-   * returns the amperage of the charger measured by the vehicle.
-   */
-  @SpeakeasyMetadata()
-  chargeAmmeter?: shared.ChargeAmmeter;
+    /**
+     * returns the amperage of the charger measured by the vehicle.
+     */
+    @SpeakeasyMetadata()
+    chargeAmmeter?: shared.ChargeAmmeter;
 
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 }
