@@ -55,8 +55,8 @@ export class SDKConfiguration {
     serverURL: string;
     serverDefaults: any;
     language = "typescript";
-    sdkVersion = "2.16.0";
-    genVersion = "2.35.3";
+    sdkVersion = "2.16.1";
+    genVersion = "2.35.9";
 
     public constructor(init?: Partial<SDKConfiguration>) {
         Object.assign(this, init);
@@ -64,7 +64,7 @@ export class SDKConfiguration {
 }
 
 /**
- * # How do I use Postman with Smartcar?
+ * Smartcar API: # How do I use Postman with Smartcar?
  *
  * @remarks
  * We've detailed how to get started with Smartcar in Postman [here](https://www.notion.so/smartcarapi/How-do-I-use-Postman-with-Smartcar-b8e8483bae8b43a986715582beb54bd4).
