@@ -26,7 +26,7 @@ import { GetTeslaAmmeterResponse } from "smartcar/dist/sdk/models/operations";
 
 const sdk = new Smartcar({
   security: {
-    bearerAuth: "YOUR_BEARER_TOKEN_HERE",
+    bearerAuth: "",
   },
 });
 
@@ -51,7 +51,7 @@ import { GetTeslaChargeTimeResponse } from "smartcar/dist/sdk/models/operations"
 
 const sdk = new Smartcar({
   security: {
-    bearerAuth: "YOUR_BEARER_TOKEN_HERE",
+    bearerAuth: "",
   },
 });
 
@@ -77,7 +77,7 @@ import { CompassDirection } from "smartcar/dist/sdk/models/shared";
 
 const sdk = new Smartcar({
   security: {
-    bearerAuth: "YOUR_BEARER_TOKEN_HERE",
+    bearerAuth: "",
   },
 });
 
@@ -102,7 +102,7 @@ import { GetTeslaExteriorTemperatureResponse } from "smartcar/dist/sdk/models/op
 
 const sdk = new Smartcar({
   security: {
-    bearerAuth: "YOUR_BEARER_TOKEN_HERE",
+    bearerAuth: "",
   },
 });
 
@@ -127,7 +127,7 @@ import { GetTeslaInteriorTemperatureResponse } from "smartcar/dist/sdk/models/op
 
 const sdk = new Smartcar({
   security: {
-    bearerAuth: "YOUR_BEARER_TOKEN_HERE",
+    bearerAuth: "",
   },
 });
 
@@ -152,7 +152,7 @@ import { GetTeslaSpeedResponse } from "smartcar/dist/sdk/models/operations";
 
 const sdk = new Smartcar({
   security: {
-    bearerAuth: "YOUR_BEARER_TOKEN_HERE",
+    bearerAuth: "",
   },
 });
 
@@ -177,7 +177,7 @@ import { GetTeslaVoltageResponse } from "smartcar/dist/sdk/models/operations";
 
 const sdk = new Smartcar({
   security: {
-    bearerAuth: "YOUR_BEARER_TOKEN_HERE",
+    bearerAuth: "",
   },
 });
 
@@ -202,7 +202,7 @@ import { GetTeslaWattmeterResponse } from "smartcar/dist/sdk/models/operations";
 
 const sdk = new Smartcar({
   security: {
-    bearerAuth: "YOUR_BEARER_TOKEN_HERE",
+    bearerAuth: "",
   },
 });
 
@@ -228,7 +228,7 @@ import { SuccessResponseStatus } from "smartcar/dist/sdk/models/shared";
 
 const sdk = new Smartcar({
   security: {
-    bearerAuth: "YOUR_BEARER_TOKEN_HERE",
+    bearerAuth: "",
   },
 });
 

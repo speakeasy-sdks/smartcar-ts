@@ -19,7 +19,7 @@ import { GetCadillacChargeTimeResponse } from "smartcar/dist/sdk/models/operatio
 
 const sdk = new Smartcar({
   security: {
-    bearerAuth: "YOUR_BEARER_TOKEN_HERE",
+    bearerAuth: "",
   },
 });
 
@@ -44,7 +44,7 @@ import { GetCadillacVoltageResponse } from "smartcar/dist/sdk/models/operations"
 
 const sdk = new Smartcar({
   security: {
-    bearerAuth: "YOUR_BEARER_TOKEN_HERE",
+    bearerAuth: "",
   },
 });
 

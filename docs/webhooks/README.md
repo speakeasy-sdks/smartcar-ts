@@ -30,7 +30,7 @@ import { SuccessResponseStatus } from "smartcar/dist/sdk/models/shared";
 
 const sdk = new Smartcar({
   security: {
-    bearerAuth: "YOUR_BEARER_TOKEN_HERE",
+    bearerAuth: "",
   },
 });
 
@@ -69,7 +69,7 @@ import { SuccessResponseStatus } from "smartcar/dist/sdk/models/shared";
 
 const sdk = new Smartcar({
   security: {
-    bearerAuth: "YOUR_BEARER_TOKEN_HERE",
+    bearerAuth: "",
   },
 });
 
