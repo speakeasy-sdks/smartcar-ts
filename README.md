@@ -48,64 +48,64 @@ sdk.vehicles.getLocation("36ab27d0-fd9d-4455-823a-ce30af709ffc").then((res: GetL
 ## Available Resources and Operations
 
 
-### [cadillac](docs/cadillac/README.md)
+### [cadillac](docs/sdks/cadillac/README.md)
 
-* [getChargeTime](docs/cadillac/README.md#getchargetime) - Retrieve charging completion time for a Cadillac.
-* [getVoltage](docs/cadillac/README.md#getvoltage) - Retrieve charging voltmeter time for a Cadillac.
+* [getChargeTime](docs/sdks/cadillac/README.md#getchargetime) - Retrieve charging completion time for a Cadillac.
+* [getVoltage](docs/sdks/cadillac/README.md#getvoltage) - Retrieve charging voltmeter time for a Cadillac.
 
-### [chevrolet](docs/chevrolet/README.md)
+### [chevrolet](docs/sdks/chevrolet/README.md)
 
-* [getChargeTime](docs/chevrolet/README.md#getchargetime) - Retrieve charging completion time for a Chevrolet.
-* [getVoltage](docs/chevrolet/README.md#getvoltage) - Retrieve charging voltmeter time for a Chevrolet.
+* [getChargeTime](docs/sdks/chevrolet/README.md#getchargetime) - Retrieve charging completion time for a Chevrolet.
+* [getVoltage](docs/sdks/chevrolet/README.md#getvoltage) - Retrieve charging voltmeter time for a Chevrolet.
 
-### [compatibility](docs/compatibility/README.md)
+### [compatibility](docs/sdks/compatibility/README.md)
 
-* [listCompatibility](docs/compatibility/README.md#listcompatibility) - Compatibility
+* [listCompatibility](docs/sdks/compatibility/README.md#listcompatibility) - Compatibility
 
-### [evs](docs/evs/README.md)
+### [evs](docs/sdks/evs/README.md)
 
-* [getBatteryCapacity](docs/evs/README.md#getbatterycapacity) - EV Battery Capacity
-* [getBatteryLevel](docs/evs/README.md#getbatterylevel) - EV Battery Level
-* [getChargingLimit](docs/evs/README.md#getcharginglimit) - EV Charging Limit
-* [getChargingStatus](docs/evs/README.md#getchargingstatus) - EV Charging Status
-* [setChargingLimit](docs/evs/README.md#setcharginglimit) - Set EV Charging Limit
-* [startStopCharge](docs/evs/README.md#startstopcharge) - Start or stop charging an electric vehicle. Please contact us to request early access.
+* [getBatteryCapacity](docs/sdks/evs/README.md#getbatterycapacity) - EV Battery Capacity
+* [getBatteryLevel](docs/sdks/evs/README.md#getbatterylevel) - EV Battery Level
+* [getChargingLimit](docs/sdks/evs/README.md#getcharginglimit) - EV Charging Limit
+* [getChargingStatus](docs/sdks/evs/README.md#getchargingstatus) - EV Charging Status
+* [setChargingLimit](docs/sdks/evs/README.md#setcharginglimit) - Set EV Charging Limit
+* [startStopCharge](docs/sdks/evs/README.md#startstopcharge) - Start or stop charging an electric vehicle. Please contact us to request early access.
 
-### [tesla](docs/tesla/README.md)
+### [tesla](docs/sdks/tesla/README.md)
 
-* [getAmmeter](docs/tesla/README.md#getammeter) - Retrieve charging ammeter time for a Tesla.
-* [getChargeTime](docs/tesla/README.md#getchargetime) - Retrieve charging completion time for a Tesla.
-* [getCompass](docs/tesla/README.md#getcompass) - Retrieve compass heading for a Tesla.
-* [getExteriorTemperature](docs/tesla/README.md#getexteriortemperature) - Retrieve exterior temperature for a Tesla.
-* [getInteriorTemperature](docs/tesla/README.md#getinteriortemperature) - Retrieve interior temperature for a Tesla.
-* [getSpeedometer](docs/tesla/README.md#getspeedometer) - Retrieve speed for a Tesla.
-* [getVoltage](docs/tesla/README.md#getvoltage) - Retrieve charging voltmeter time for a Tesla.
-* [getWattmeter](docs/tesla/README.md#getwattmeter) - Retrieve charging wattmeter time for a Tesla.
-* [setAmmeter](docs/tesla/README.md#setammeter) - Set charging ammeter time for a Tesla.
+* [getAmmeter](docs/sdks/tesla/README.md#getammeter) - Retrieve charging ammeter time for a Tesla.
+* [getChargeTime](docs/sdks/tesla/README.md#getchargetime) - Retrieve charging completion time for a Tesla.
+* [getCompass](docs/sdks/tesla/README.md#getcompass) - Retrieve compass heading for a Tesla.
+* [getExteriorTemperature](docs/sdks/tesla/README.md#getexteriortemperature) - Retrieve exterior temperature for a Tesla.
+* [getInteriorTemperature](docs/sdks/tesla/README.md#getinteriortemperature) - Retrieve interior temperature for a Tesla.
+* [getSpeedometer](docs/sdks/tesla/README.md#getspeedometer) - Retrieve speed for a Tesla.
+* [getVoltage](docs/sdks/tesla/README.md#getvoltage) - Retrieve charging voltmeter time for a Tesla.
+* [getWattmeter](docs/sdks/tesla/README.md#getwattmeter) - Retrieve charging wattmeter time for a Tesla.
+* [setAmmeter](docs/sdks/tesla/README.md#setammeter) - Set charging ammeter time for a Tesla.
 
-### [user](docs/user/README.md)
+### [user](docs/sdks/user/README.md)
 
-* [getInfo](docs/user/README.md#getinfo) - User Info
+* [getInfo](docs/sdks/user/README.md#getinfo) - User Info
 
-### [vehicles](docs/vehicles/README.md)
+### [vehicles](docs/sdks/vehicles/README.md)
 
-* [batch](docs/vehicles/README.md#batch) - Batch
-* [disconnect](docs/vehicles/README.md#disconnect) - Revoke Access
-* [get](docs/vehicles/README.md#get) - Vehicle Info
-* [getEngineOil](docs/vehicles/README.md#getengineoil) - Engine Oil Life
-* [getFuelTank](docs/vehicles/README.md#getfueltank) - Fuel Tank (US Only)
-* [getLocation](docs/vehicles/README.md#getlocation) - Location
-* [getOdometer](docs/vehicles/README.md#getodometer) - Odometer
-* [getPermissions](docs/vehicles/README.md#getpermissions) - Application Permissions
-* [getTirePressure](docs/vehicles/README.md#gettirepressure) - Tire pressure
-* [getVin](docs/vehicles/README.md#getvin) - Returns the vehicle’s manufacturer identifier.
-* [listVehicles](docs/vehicles/README.md#listvehicles) - All Vehicles
-* [lockUnlock](docs/vehicles/README.md#lockunlock) - Lock/Unlock Vehicle
+* [batch](docs/sdks/vehicles/README.md#batch) - Batch
+* [disconnect](docs/sdks/vehicles/README.md#disconnect) - Revoke Access
+* [get](docs/sdks/vehicles/README.md#get) - Vehicle Info
+* [getEngineOil](docs/sdks/vehicles/README.md#getengineoil) - Engine Oil Life
+* [getFuelTank](docs/sdks/vehicles/README.md#getfueltank) - Fuel Tank (US Only)
+* [getLocation](docs/sdks/vehicles/README.md#getlocation) - Location
+* [getOdometer](docs/sdks/vehicles/README.md#getodometer) - Odometer
+* [getPermissions](docs/sdks/vehicles/README.md#getpermissions) - Application Permissions
+* [getTirePressure](docs/sdks/vehicles/README.md#gettirepressure) - Tire pressure
+* [getVin](docs/sdks/vehicles/README.md#getvin) - Returns the vehicle’s manufacturer identifier.
+* [listVehicles](docs/sdks/vehicles/README.md#listvehicles) - All Vehicles
+* [lockUnlock](docs/sdks/vehicles/README.md#lockunlock) - Lock/Unlock Vehicle
 
-### [webhooks](docs/webhooks/README.md)
+### [webhooks](docs/sdks/webhooks/README.md)
 
-* [subscribe](docs/webhooks/README.md#subscribe) - Subscribe Webhook
-* [unsubscribe](docs/webhooks/README.md#unsubscribe) - Unsubscribe Webhook
+* [subscribe](docs/sdks/webhooks/README.md#subscribe) - Subscribe Webhook
+* [unsubscribe](docs/sdks/webhooks/README.md#unsubscribe) - Unsubscribe Webhook
 <!-- End SDK Available Operations -->
 
 ### Maturity
