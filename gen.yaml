@@ -5,11 +5,18 @@ management:
   speakeasyVersion: 1.34.0
   generationVersion: 2.30.0
 generation:
+  comments:
+    disableComments: false
+    omitDescriptionIfSummaryPresent: false
+  baseServerURL: ""
   sdkClassName: Smartcar
+  sdkFlattening: true
   singleTagPerOp: false
+  tagNamespacingDisabled: false
   telemetryEnabled: false
 typescript:
   version: 2.12.0
   author: smartcar
+  clientServerStatusCodesAsErrors: true
   maxMethodParams: 5
   packageName: smartcar
